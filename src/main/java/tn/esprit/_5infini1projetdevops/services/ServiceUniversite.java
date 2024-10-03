@@ -1,9 +1,8 @@
-package tn.esprit._5infini1projetdevops.Service;
+package tn.esprit._5infini1projetdevops.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
-import tn.esprit._5infini1projetdevops.entity.Foyer;
 import tn.esprit._5infini1projetdevops.entity.Universite;
 
 import java.util.List;

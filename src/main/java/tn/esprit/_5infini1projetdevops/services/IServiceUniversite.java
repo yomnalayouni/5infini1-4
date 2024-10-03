@@ -1,4 +1,4 @@
-package tn.esprit._5infini1projetdevops.Service;
+package tn.esprit._5infini1projetdevops.services;
 
 import tn.esprit._5infini1projetdevops.entity.Universite;
 

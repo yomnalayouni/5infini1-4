@@ -1,30 +1,34 @@
 package tn.esprit._5infini1projetdevops.entity;
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import tn.esprit._5infini1projetdevops.entity.Universite;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
-@Entity
-@Table(name = "T_FOYER")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Foyer implements Serializable {
+@Table(name = "foyer")
+public class Foyer {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idFoyer;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    Long idFoyer;
     String nomFoyer;
-    long capaciteFoyer;
+    Long capaciteFoyer;
+
     @OneToOne(mappedBy = "foyer")
-    University universite;
-    @OneToMany(mappedBy = "foyer")
-    List<Bloc> blocs= new ArrayList<>();
+    @JsonIgnore
+    Universite universite;
+
+
+
+
+    public void setId(Long idFoyer) {
+    }
 }

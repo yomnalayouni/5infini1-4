@@ -1,4 +1,4 @@
-package tn.esprit._5infini1projetdevops.repositories;
+package tn.esprit._5infini1projetdevops.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
