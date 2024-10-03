@@ -1,7 +1,5 @@
 package tn.esprit._5infini1projetdevops.entity;
 
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
