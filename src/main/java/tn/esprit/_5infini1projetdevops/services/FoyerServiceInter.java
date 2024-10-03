@@ -1,8 +1,7 @@
 package tn.esprit._5infini1projetdevops.services;
 
 
-import tn.esprit._5infini1projetdevops.entity.Foyer;
-import tn.esprit._5infini1projetdevops.entity.University;
+import tn.esprit._5infini1projetdevops.Entity.Foyer;
 
 import java.util.List;
 
@@ -17,9 +16,9 @@ public interface FoyerServiceInter {
 
     void delete(Foyer f);
 
-    University affecterFoyerAUniversite(long idFoyer, String nomUniversite);
+    Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite);
 
-    University desaffecterFoyerAUniversite(long idUniversite);
+    Universite desaffecterFoyerAUniversite(long idUniversite);
 
     Foyer ajouterFoyerEtAffecterAUniversite (Foyer foyer, long idUniversite); // Universite: Parent / Foyer:Child
     Foyer ajoutFoyerEtBlocs(Foyer foyer);

@@ -2,8 +2,7 @@ package tn.esprit._5infini1projetdevops.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit._5infini1projetdevops.entity.Foyer;
-import tn.esprit._5infini1projetdevops.entity.University;
+import tn.esprit._5infini1projetdevops.Entity.Foyer;
 import tn.esprit._5infini1projetdevops.services.FoyerServiceInter;
 
 import java.util.List;
@@ -40,12 +39,12 @@ public class ControllerFoyer {
     }
 
     @PutMapping("affecterFoyerAUniversite")
-    University affecterFoyerAUniversite(@RequestParam long idFoyer, @RequestParam String nomUniversite) {
+    Universite affecterFoyerAUniversite(@RequestParam long idFoyer, @RequestParam String nomUniversite) {
         return service.affecterFoyerAUniversite(idFoyer, nomUniversite);
     }
 
     @PutMapping("desaffecterFoyerAUniversite")
-    University desaffecterFoyerAUniversite(@RequestParam long idUniversite){
+    Universite desaffecterFoyerAUniversite(@RequestParam long idUniversite){
         return service.desaffecterFoyerAUniversite(idUniversite);
     }
 

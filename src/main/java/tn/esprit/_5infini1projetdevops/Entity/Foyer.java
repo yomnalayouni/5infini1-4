@@ -1,6 +1,6 @@
-package tn.esprit._5infini1projetdevops.entity;
+package tn.esprit._5infini1projetdevops.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -10,21 +10,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "T_BLOC")
+@Table(name = "T_FOYER")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Bloc implements Serializable {
+public class Foyer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idBloc;
-    String nomBloc;
-    long capaciteBloc;
-    @ManyToOne
-    @JsonIgnore
-    Foyer foyer;
-
+    long idFoyer;
+    String nomFoyer;
+    long capaciteFoyer;
+    @OneToOne(mappedBy = "foyer")
+    University universite;
+    @OneToMany(mappedBy = "foyer")
+    List<Bloc> blocs= new ArrayList<>();
 }

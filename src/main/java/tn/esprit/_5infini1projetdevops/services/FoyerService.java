@@ -2,9 +2,7 @@ package tn.esprit._5infini1projetdevops.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import tn.esprit._5infini1projetdevops.entity.Bloc;
-import tn.esprit._5infini1projetdevops.entity.Foyer;
-import tn.esprit._5infini1projetdevops.entity.University;
+import tn.esprit._5infini1projetdevops.Entity.Foyer;
 import tn.esprit._5infini1projetdevops.repository.FoyerRepository;
 
 import java.util.List;
@@ -42,17 +40,17 @@ public class FoyerService {
     }
 
     @Override
-    public University affecterFoyerAUniversite(long idFoyer, String nomUniversite) {
+    public Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite) {
         Foyer f = findById(idFoyer); // Child
-        University u = universiteRepository.findByNomUniversite(nomUniversite); // Parent
+        Universite u = universiteRepository.findByNomUniversite(nomUniversite); // Parent
         // On affecte le child au parent
         u.setFoyer(f);
         return universiteRepository.save(u);
     }
 
     @Override
-    public University desaffecterFoyerAUniversite(long idUniversite) {
-        University u = universiteRepository.findById(idUniversite).get(); // Parent
+    public Universite desaffecterFoyerAUniversite(long idUniversite) {
+        Universite u = universiteRepository.findById(idUniversite).get(); // Parent
         u.setFoyer(null);
         return universiteRepository.save(u);
     }
@@ -63,7 +61,7 @@ public class FoyerService {
         List<Bloc> blocs = foyer.getBlocs();
         // Foyer est le child et universite est parent
         Foyer f = repo.save(foyer);
-        University u = universiteRepository.findById(idUniversite).get();
+        Universite u = universiteRepository.findById(idUniversite).get();
         // Foyer est le child et bloc est le parent
         //On affecte le child au parent
         for (Bloc bloc : blocs) {
