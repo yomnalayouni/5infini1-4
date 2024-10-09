@@ -2,14 +2,18 @@ package tn.esprit._5infini1projetdevops.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit._5infini1projetdevops.Entity.Bloc;
 import tn.esprit._5infini1projetdevops.Entity.Foyer;
-import tn.esprit._5infini1projetdevops.repository.FoyerRepository;
+import tn.esprit._5infini1projetdevops.Entity.Universite;
+import tn.esprit._5infini1projetdevops.Repository.BlocRepository;
+import tn.esprit._5infini1projetdevops.Repository.FoyerRepository;
+import    tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class FoyerService {
+public class FoyerService implements FoyerServiceInter {
     FoyerRepository repo;
     UniversiteRepository universiteRepository;
     BlocRepository blocRepository;
@@ -41,12 +45,9 @@ public class FoyerService {
 
     @Override
     public Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite) {
-        Foyer f = findById(idFoyer); // Child
-        Universite u = universiteRepository.findByNomUniversite(nomUniversite); // Parent
-        // On affecte le child au parent
-        u.setFoyer(f);
-        return universiteRepository.save(u);
+        return null;
     }
+
 
     @Override
     public Universite desaffecterFoyerAUniversite(long idUniversite) {
@@ -57,39 +58,12 @@ public class FoyerService {
 
     @Override
     public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite) {
-        // Récuperer la liste des blocs avant de faire l'ajout
-        List<Bloc> blocs = foyer.getBlocs();
-        // Foyer est le child et universite est parent
-        Foyer f = repo.save(foyer);
-        Universite u = universiteRepository.findById(idUniversite).get();
-        // Foyer est le child et bloc est le parent
-        //On affecte le child au parent
-        for (Bloc bloc : blocs) {
-            bloc.setFoyer(foyer);
-            blocRepository.save(bloc);
-        }
-        u.setFoyer(f);
-        return universiteRepository.save(u).getFoyer();
+        return null;
     }
 
     @Override
     public Foyer ajoutFoyerEtBlocs(Foyer foyer) {
-        //Foyer child / Bloc parent
-        //Objet foyer = attribut objet foyer + les blocs associés
-//        Foyer f = repo.save(foyer);
-//        for (Bloc b : foyer.getBlocs()) {
-//            b.setFoyer(f);
-//            blocRepository.save(b);
-//        }
-//        return f;
-        //-----------------------------------------
-        List<Bloc> blocs = foyer.getBlocs();
-        foyer = repo.save(foyer);
-        for (Bloc b : blocs) {
-            b.setFoyer(foyer);
-            blocRepository.save(b);
-        }
-        return foyer;
+        return null;
     }
 
 

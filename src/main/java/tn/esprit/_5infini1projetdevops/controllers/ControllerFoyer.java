@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._5infini1projetdevops.Entity.Foyer;
 import tn.esprit._5infini1projetdevops.services.FoyerServiceInter;
+import tn.esprit._5infini1projetdevops.Entity.Universite;
 
 import java.util.List;
 
