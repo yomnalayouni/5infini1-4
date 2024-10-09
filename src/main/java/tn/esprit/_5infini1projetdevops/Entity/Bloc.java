@@ -22,7 +22,10 @@ import java.util.Set;
         String nomBloc;
         Long capaciteBloc;
 
-
+        @ManyToOne
+        Foyer foyer;
+        @OneToMany (mappedBy = "bloc" , fetch = FetchType.EAGER)
+        Set<Chambre> chambres ;
 
 
 
