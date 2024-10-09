@@ -1,4 +1,4 @@
-package tn.esprit._5infini1projetdevops.entity;
+package tn.esprit._5infini1projetdevops.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -19,7 +19,7 @@ public class Universite {
     String adresse;
 
     @OneToOne(cascade = CascadeType.ALL)
-    tn.esprit._5infini1projetdevops.entity.Foyer foyer;
+     public Foyer foyer;
 
 
     public void setId(Long idUniversite) {

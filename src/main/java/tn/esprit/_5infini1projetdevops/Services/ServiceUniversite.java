@@ -1,10 +1,9 @@
-package tn.esprit._5infini1projetdevops.Service;
+package tn.esprit._5infini1projetdevops.Services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
-import tn.esprit._5infini1projetdevops.entity.Foyer;
-import tn.esprit._5infini1projetdevops.entity.Universite;
+import tn.esprit._5infini1projetdevops.Entity.Universite;
 
 import java.util.List;
 @AllArgsConstructor
@@ -16,7 +15,7 @@ public class ServiceUniversite implements  IServiceUniversite{
 
 
         private UniversiteRepository universiteRepository;
-       // private FoyerRepository foyerRepository ;
+       private FoyerRepository foyerRepository ;
         @Override
         public Universite addUniversite(Universite universite) {
             return universiteRepository.save(universite);
@@ -45,13 +44,13 @@ public class ServiceUniversite implements  IServiceUniversite{
             return universiteRepository.findById(idUniversite).get();
         }
 
-       /* public void assignFoyerToUniversite(Long idUniversite, Long idFoyer) {
+        public void assignFoyerToUniversite(Long idUniversite, Long idFoyer) {
             Universite universite = universiteRepository.findById(idUniversite).get();
             Foyer foyer = foyerRepository.findById(idFoyer).get();
 // on set le fils dans le parent :
             universite.setFoyer(foyer);
             universiteRepository.save(universite);
-        }*/
+        }
         public void unassignFoyerToUniversite(Long idUniversite) {
             Universite universite = universiteRepository.findById(idUniversite).get();
             //Foyer foyer = foyerRepository.findById(idFoyer).get();
