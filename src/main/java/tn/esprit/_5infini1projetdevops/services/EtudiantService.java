@@ -3,7 +3,7 @@ package tn.esprit._5infini1projetdevops.services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
-import tn.esprit._5infini1projetdevops.repository.EtudiantRepository;
+import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
 
 import java.util.List;
 
