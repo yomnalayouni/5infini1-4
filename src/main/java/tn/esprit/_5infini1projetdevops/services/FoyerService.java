@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit._5infini1projetdevops.entity.Bloc;
 import tn.esprit._5infini1projetdevops.entity.Foyer;
 import tn.esprit._5infini1projetdevops.entity.University;
-import tn.esprit._5infini1projetdevops.repository.FoyerRepository;
+import tn.esprit._5infini1projetdevops.Repository.FoyerRepository;
 
 import java.util.List;
 

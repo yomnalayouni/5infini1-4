@@ -1,4 +1,4 @@
-package tn.esprit._5infini1projetdevops.controllers;
+package tn.esprit._5infini1projetdevops.Controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
