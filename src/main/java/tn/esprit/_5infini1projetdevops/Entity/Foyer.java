@@ -1,9 +1,9 @@
-package tn.esprit._5infini1projetdevops.entity;
+package tn.esprit._5infini1projetdevops.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import tn.esprit._5infini1projetdevops.entity.Universite;
+import tn.esprit._5infini1projetdevops.Entity.Universite;
 
 import java.util.Set;
 

@@ -1,6 +1,6 @@
 package tn.esprit._5infini1projetdevops.services;
 
-import tn.esprit._5infini1projetdevops.entity.Universite;
+import tn.esprit._5infini1projetdevops.Entity.Universite;
 
 import java.util.List;
 
