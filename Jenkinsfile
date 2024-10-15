@@ -1,1 +1,1 @@
-hello
+def hello = "Hello, World!"
