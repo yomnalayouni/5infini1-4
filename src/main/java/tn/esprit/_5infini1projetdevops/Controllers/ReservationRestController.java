@@ -1,11 +1,10 @@
-package com.example.projetdevops.Controllers;
+package tn.esprit._5infini1projetdevops.Controllers;
+
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import com.example.projetdevops.Entity.Reservation;
-import tn.esprit.spring.DAO.Entities.Universite;
-import com.example.projetdevops.services.IReservationService;
-import tn.esprit.spring.Services.Universite.IUniversiteService;
+import tn.esprit._5infini1projetdevops.Entity.Reservation;
+import tn.esprit._5infini1projetdevops.services.IReservationService;
 
 import java.time.LocalDate;
 import java.util.List;

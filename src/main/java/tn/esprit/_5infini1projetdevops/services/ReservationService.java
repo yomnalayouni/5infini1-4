@@ -1,8 +1,13 @@
-package com.example.projetdevops.services;
+package tn.esprit._5infini1projetdevops.services;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import tn.esprit._5infini1projetdevops.Entity.Etudiant;
+import tn.esprit._5infini1projetdevops.Entity.Reservation;
+import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
+import tn.esprit._5infini1projetdevops.Repository.ReservationRepository;
+import tn.esprit._5infini1projetdevops.services.IReservationService;
 import tn.esprit.spring.DAO.Entities.Chambre;
 import tn.esprit.spring.DAO.Entities.Etudiant;
 import tn.esprit.spring.DAO.Entities.Foyer;

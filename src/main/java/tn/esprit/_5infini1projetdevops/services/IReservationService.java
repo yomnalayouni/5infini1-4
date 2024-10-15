@@ -1,5 +1,6 @@
-package com.example.projetdevops.services;
+package tn.esprit._5infini1projetdevops.services;
 
+import tn.esprit._5infini1projetdevops.Entity.Reservation;
 import tn.esprit.spring.DAO.Entities.Foyer;
 import tn.esprit.spring.DAO.Entities.Reservation;
 

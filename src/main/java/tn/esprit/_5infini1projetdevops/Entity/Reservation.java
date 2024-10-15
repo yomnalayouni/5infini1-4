@@ -1,4 +1,4 @@
-package com.example.projetdevops.Entity;
+package tn.esprit._5infini1projetdevops.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

@@ -1,7 +1,7 @@
-package com.example.projetdevops.Repository;
+package tn.esprit._5infini1projetdevops.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.projetdevops.Entity.Reservation;
+import tn.esprit._5infini1projetdevops.Entity.Reservation;
 
 import java.time.LocalDate;
 import java.util.List;
