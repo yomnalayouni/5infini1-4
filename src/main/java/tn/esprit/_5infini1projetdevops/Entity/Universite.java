@@ -1,11 +1,7 @@
 package tn.esprit._5infini1projetdevops.Entity;
-
-
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Set;
 
 @Getter
 @Setter
@@ -13,20 +9,19 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "chambres")
-public class Chambre {
+@Table(name = "universite")
+public class Universite {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long idChambre;
-    private Long numeroChambre;
-    @Enumerated(EnumType.STRING)
-    private TypeChambre typeC;
+    Long idUniversite;
+    String nomUniversite;
+    String adresse;
 
-    @ManyToOne
-    private Bloc bloc;
+    @OneToOne(cascade = CascadeType.ALL)
+    Foyer foyer;
 
 
-    public void setId(Long idChambre) {
+    public void setId(Long idUniversite) {
     }
 }
