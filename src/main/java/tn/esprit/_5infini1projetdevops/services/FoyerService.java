@@ -2,12 +2,12 @@ package tn.esprit._5infini1projetdevops.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import tn.esprit._5infini1projetdevops.Entity.Bloc;
 import tn.esprit._5infini1projetdevops.Entity.Foyer;
-
-
+import tn.esprit._5infini1projetdevops.Entity.Universite;
+import tn.esprit._5infini1projetdevops.Repository.BlocRepository;
 import tn.esprit._5infini1projetdevops.Repository.FoyerRepository;
-
+import    tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class FoyerService implements FoyerServiceInter {
     FoyerRepository repo;
-   /* UniversiteRepository universiteRepository;
-    BlocRepository blocRepository;*/
+    UniversiteRepository universiteRepository;
+    BlocRepository blocRepository;
 
     @Override
     public Foyer addOrUpdate(Foyer f) {
@@ -43,7 +43,7 @@ public class FoyerService implements FoyerServiceInter {
         repo.delete(f);
     }
 
-  /*  @Override
+    @Override
     public Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite) {
         return null;
     }
@@ -65,6 +65,6 @@ public class FoyerService implements FoyerServiceInter {
     public Foyer ajoutFoyerEtBlocs(Foyer foyer) {
         return null;
     }
-*/
+
 
 }
