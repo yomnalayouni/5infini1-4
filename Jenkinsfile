@@ -7,7 +7,6 @@ pipeline {
                 echo "hellooo worldddd"
             }
         }
-      
         stage('Checkout') {
             steps {
                 script {
