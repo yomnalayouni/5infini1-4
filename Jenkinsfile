@@ -7,11 +7,21 @@ pipeline {
                 echo "hellooo worldddd"
             }
         }
+        stage('Add GitHub to Known Hosts') {
+            steps {
+                script {
+                    sh '''
+                    mkdir -p ~/.ssh
+                    ssh-keyscan github.com >> ~/.ssh/known_hosts
+                    '''
+                }
+            }
+        }
         stage('Checkout') {
             steps {
                 script {
                     echo "Checking out branch: ${env.BRANCH_NAME}"
-                    git branch: 'main', url: 'git@github.com:yomnalayouni/5infini1-4.git', credentialsId: 'credJk'
+                    git branch: 'main', url: 'git@github.com:yomnalayouni/5infini1-4.git'
                 }
             }
         }
@@ -19,7 +29,7 @@ pipeline {
             steps {
                 script {
                     echo "Checking out branch: ${env.BRANCH_NAME}"
-                    git branch: 'yomna-layouni-etudiant', url: 'git@github.com:yomnalayouni/5infini1-4.git', credentialsId: 'credJk'
+                    git branch: 'yomna-layouni-etudiant', url: 'git@github.com:yomnalayouni/5infini1-4.git'
                 }
             }
         }
