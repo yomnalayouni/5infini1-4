@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -26,6 +28,8 @@ public class Chambre {
 
     @ManyToOne
     private Bloc bloc;
+    @OneToMany
+    List<Reservation> reservations= new ArrayList<>();
 
 
     public void setId(Long idChambre) {
