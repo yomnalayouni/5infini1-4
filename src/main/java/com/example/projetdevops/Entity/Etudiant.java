@@ -1,6 +1,5 @@
 package tn.esprit._5infini1projetdevops.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -11,21 +10,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "T_RESERVATION")
+@Table(name = "T_ETUDIANT")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Reservation implements Serializable {
+public class Etudiant implements Serializable {
     @Id
-    String idReservation;
-    LocalDate anneeUniversitaire;
-    boolean estValide;
-    @ManyToMany
-    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long idEtudiant;
+    String nomEt;
+    String prenomEt;
+    long cin;
+    String ecole;
+    LocalDate dateNaissance;
+    @ManyToMany(mappedBy = "etudiants")
+    List<Reservation> reservations= new ArrayList<>();
 
-    List<Etudiant> etudiants = new ArrayList<>();
 
 }

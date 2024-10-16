@@ -1,13 +1,13 @@
-package com.example.projetdevops;
+package tn.esprit._5infini1projetdevops;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjetdevopsApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProjetdevopsApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
