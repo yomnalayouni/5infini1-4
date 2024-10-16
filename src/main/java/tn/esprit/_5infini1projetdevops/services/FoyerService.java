@@ -7,7 +7,7 @@ import tn.esprit._5infini1projetdevops.Entity.Foyer;
 import tn.esprit._5infini1projetdevops.Entity.Universite;
 import tn.esprit._5infini1projetdevops.Repository.BlocRepository;
 import tn.esprit._5infini1projetdevops.Repository.FoyerRepository;
-import    tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
+import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
 
 import java.util.List;
 
