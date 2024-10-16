@@ -1,4 +1,4 @@
-package tn.esprit._5infini1projetdevops.entity;
+package tn.esprit._5infini1projetdevops.Entity;
 
 
 import jakarta.persistence.*;
@@ -24,7 +24,7 @@ public class Foyer implements Serializable {
     String nomFoyer;
     long capaciteFoyer;
     @OneToOne(mappedBy = "foyer")
-    University universite;
+    Universite universite;
     @OneToMany(mappedBy = "foyer")
     List<Bloc> blocs= new ArrayList<>();
 }
