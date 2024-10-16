@@ -1,32 +1,36 @@
 pipeline {
     agent any
-
     stages {
-         stage('Hello') {
+        stage('Build') {
             steps {
-                echo "hellooo worldddd"
+                echo 'Building...'
+                // Build commands go here
             }
-        }
-        stage('Checkout') {
-            steps {
-                script {
-                    echo "Checking out branch: ${env.BRANCH_NAME}"
-                    // Make sure to use the correct URL for SSH or HTTPS with PAT
-                    git branch: 'main', url: 'git@github.com:yomnalayouni/5infini1-4.git', credentialsId: 'credJk'
+            post {
+                success {
+                    echo 'Build was successful!'
+                }
+                failure {
+                    echo 'Build failed.'
                 }
             }
         }
-   
-    post {
-        always {
-            echo 'Pipeline finished.'
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                // Test commands go here
+            }
         }
-        success {
-            echo 'Pipeline succeeded!'
-        }
-        failure {
-            echo 'Pipeline failed.'
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Deployment commands go here
+            }
         }
     }
-}
+    post {
+        always {
+            echo 'This runs after all stages.'
+        }
+    }
 }
