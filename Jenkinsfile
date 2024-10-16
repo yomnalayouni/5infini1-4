@@ -2,16 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
+        stage('Hello') {
             steps {
-                echo "Running tests on branch: ${env.BRANCH_NAME}"
-                sh './mvnw test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo "Deploying the project from branch: ${env.BRANCH_NAME}"
+                echo "hellooo worldddd"
                 // Add your deployment logic here
             }
         }
