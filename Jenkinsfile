@@ -2,13 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo "Checking out branch: ${env.BRANCH_NAME}"
-                git branch: "${env.BRANCH_NAME}", url: 'https://github.com/yomnalayouni/5infini1-4.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 echo "Building the project on branch: ${env.BRANCH_NAME}"
