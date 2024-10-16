@@ -18,6 +18,16 @@ pipeline {
                 }
             }
         }
+        stage('CheckoutY') {
+            steps {
+                script {
+                    echo "Checking out branch: ${env.BRANCH_NAME}"
+                    // Update the URL and branch name as needed
+                    git branch: 'yomna-layouni-etudiant', url: 'https://github.com/yomnalayouni/5infini1-4.git', credentialsId: 'GitJen'
+
+                }
+            }
+        }
     }
 
     post {
