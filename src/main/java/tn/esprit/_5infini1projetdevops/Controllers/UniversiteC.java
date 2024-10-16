@@ -16,9 +16,9 @@ public class UniversiteC {
     }
 
     @GetMapping("/show-universiteid/{id}")
-    public List<UniversiteC> getUniversite(@PathVariable("id") Long idUniversite)
+    public List<Universite> getUniversite(@PathVariable("id") Long idUniversite)
     {
-        return (List<UniversiteC>) universiteService.getuniversite(idUniversite);
+        return (List<Universite>) universiteService.getuniversite(idUniversite);
     }
 
     @PostMapping(path = "/add-universite")
@@ -47,6 +47,9 @@ public class UniversiteC {
         universiteService.assignFoyerToUniversite(idUniversite,idFoyer);
     }
     @PutMapping("/deaffecter-universite-a-foyer/{universite-id}")
-    public void  enassignFoyerToUniversite(@PathVariable("universite-id") Long idUniversite) {
-        universiteService.unassignFoyerToUniversite(idUniversite);
+    public void  enassignFoyerToUniversite(@PathVariable("universite-id") Long idUniversite ,
+    @RequestParam  Long idFoyer) {
+        universiteService.unassignFoyerToUniversite(idUniversite ,  idFoyer);
     }}
+
+
