@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     echo "Checking out branch: ${env.BRANCH_NAME}"
-                    git branch: 'yomna-layouni-etudiant', url: 'git@github.com:yomnalayouni/5infini1-4.git', credentialsId: 'GitJen'
+                    git branch: 'yomna-layouni-etudiant', url: 'git@github.com:yomnalayouni/5infini1-4.git', credentialsId: 'credJk'
                 }
             }
         }
