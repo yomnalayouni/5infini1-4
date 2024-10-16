@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+         stage('Hello') {
             steps {
                 echo "hellooo worldddd"
             }
@@ -11,13 +11,12 @@ pipeline {
             steps {
                 script {
                     echo "Checking out branch: ${env.BRANCH_NAME}"
+                    // Make sure to use the correct URL for SSH or HTTPS with PAT
                     git branch: 'main', url: 'git@github.com:yomnalayouni/5infini1-4.git', credentialsId: 'credJk'
                 }
             }
         }
-      
-    }
-
+   
     post {
         always {
             echo 'Pipeline finished.'
