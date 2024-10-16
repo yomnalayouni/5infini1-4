@@ -34,10 +34,10 @@ public class UniversiteC {
     }
 
     @PutMapping(path = "/update-universite")
-    public UniversiteC updateRUniversite(@RequestBody UniversiteC c)
+    public Universite updateRUniversite(@RequestBody Universite c)
     {
 
-        UniversiteC universite = universiteService.updateUniversite(c);
+        Universite universite = universiteService.updateUniversite(c);
         return universite ;
     }
 

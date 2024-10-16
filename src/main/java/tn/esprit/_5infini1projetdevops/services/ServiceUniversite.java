@@ -44,16 +44,16 @@ public class ServiceUniversite implements  IServiceUniversite{
         return universiteRepository.findById(idUniversite).get();
     }
 
-    /* public void assignFoyerToUniversite(Long idUniversite, Long idFoyer) {
-         Universite universite = universiteRepository.findById(idUniversite).get();
+    public void assignFoyerToUniversite(Long idUniversite, Long idFoyer) {
+        Universite universite = universiteRepository.findById(idUniversite).get();
          Foyer foyer = foyerRepository.findById(idFoyer).get();
 // on set le fils dans le parent :
          universite.setFoyer(foyer);
          universiteRepository.save(universite);
-     }*/
-    public void unassignFoyerToUniversite(Long idUniversite) {
+     }
+    public void unassignFoyerToUniversite(Long idUniversite , Long idFoyer ) {
         Universite universite = universiteRepository.findById(idUniversite).get();
-        //Foyer foyer = foyerRepository.findById(idFoyer).get();
+        Foyer foyer = foyerRepository.findById(idFoyer).get();
 // on set le fils dans le parent :
         universite.setFoyer(null);
         universiteRepository.save(universite);
