@@ -3,19 +3,15 @@ package tn.esprit._5infini1projetdevops.services;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import tn.esprit._5infini1projetdevops.Entity.Chambre;
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
 import tn.esprit._5infini1projetdevops.Entity.Reservation;
+import tn.esprit._5infini1projetdevops.Repository.ChambreRepository;
 import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
 import tn.esprit._5infini1projetdevops.Repository.ReservationRepository;
-import tn.esprit._5infini1projetdevops.services.IReservationService;
-import tn.esprit.spring.DAO.Entities.Chambre;
-import tn.esprit.spring.DAO.Entities.Etudiant;
-import tn.esprit.spring.DAO.Entities.Foyer;
-import com.example.projetdevops.Entity;
-import tn.esprit.spring.DAO.Repositories.ChambreRepository;
-import tn.esprit.spring.DAO.Repositories.EtudiantRepository;
-import tn.esprit.spring.DAO.Repositories.FoyerRepository;
-import tn.esprit.spring.DAO.Repositories.ReservationRepository;
+
+
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -53,7 +49,7 @@ public class ReservationService implements IReservationService {
         repo.delete(r);
     }
 
-    @Override
+   /* @Override
     public Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(Long numChambre, long cin) {
         // Pour l’ajout de Réservation, l’id est un String et c’est la concaténation de "numeroChambre",
         // "nomBloc" et "cin". Aussi, l’ajout ne se fait que si la capacite maximale de la chambre est encore non atteinte.
@@ -115,13 +111,13 @@ public class ReservationService implements IReservationService {
         }
         return res;
     }
-
-    @Override
+*/
+   /* @Override
     public long getReservationParAnneeUniversitaire(LocalDate debutAnnee, LocalDate finAnnee) {
         return repo.countByAnneeUniversitaireBetween(debutAnnee, finAnnee);
     }
-
-    @Override
+*/
+  /*  @Override
     public String annulerReservation(long cinEtudiant) {
         Reservation r = repo.findByEtudiantsCinAndEstValide(cinEtudiant, true);
         Chambre c = chambreRepository.findByReservationsIdReservation(r.getIdReservation());
@@ -130,8 +126,8 @@ public class ReservationService implements IReservationService {
         repo.delete(r);
         return "La réservation " + r.getIdReservation() + " est annulée avec succés";
     }
-
-    @Override
+*/
+   /* @Override
     public void affectReservationAChambre(String idRes, long idChambre) {
         Reservation r = repo.findById(idRes).get();
         Chambre c = chambreRepository.findById(idChambre).get();
@@ -140,7 +136,7 @@ public class ReservationService implements IReservationService {
         c.getReservations().add(r);
         chambreRepository.save(c);
     }
-
+*/
     @Override
     public void annulerReservations() {
         // Début "récuperer l'année universitaire actuelle"

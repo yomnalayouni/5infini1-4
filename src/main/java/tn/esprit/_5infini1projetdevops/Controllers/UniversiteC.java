@@ -47,9 +47,6 @@ public class UniversiteC {
         universiteService.assignFoyerToUniversite(idUniversite,idFoyer);
     }
     @PutMapping("/deaffecter-universite-a-foyer/{universite-id}")
-    public void  enassignFoyerToUniversite(@PathVariable("universite-id") Long idUniversite ,
-    @RequestParam  Long idFoyer) {
-        universiteService.unassignFoyerToUniversite(idUniversite ,  idFoyer);
-    }}
-
-
+    public void  enassignFoyerToUniversite(@PathVariable("universite-id") Long idUniversite) {
+        universiteService.unassignFoyerToUniversite(idUniversite);
+}}
