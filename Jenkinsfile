@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     echo "Checking out branch: ${env.BRANCH_NAME}"
-                    git branch: 'main', url: 'git@github.com:yomnalayouni/5infini1-4.git'
+                    git branch: 'main', url: 'git@github.com:yomnalayouni/5infini1-4.git', credentialsId: 'credJk'
                 }
             }
         }
