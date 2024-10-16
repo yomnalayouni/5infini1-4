@@ -14,7 +14,7 @@ public interface IServiceUniversite {
     public Universite updateUniversite(Universite universite);
     public List<Universite> getAlluniversites();
     public Universite getuniversite (Long idUniversite);
-    // public void  assignFoyerToUniversite(Long idUniversite, Long idFoyer);
-   // public void unassignFoyerToUniversite(Long idUniversite);
+   // public void  assignFoyerToUniversite(Long idUniversite, Long idFoyer);
+    public void unassignFoyerToUniversite(Long idUniversite);
 
 }

@@ -41,7 +41,7 @@ public class UniversiteC {
         return universite ;
     }
 
-  /*  @PutMapping("/affecter-universite-a-foyer/{universite-id}/{foyer-id}")
+    @PutMapping("/affecter-universite-a-foyer/{universite-id}/{foyer-id}")
     public void  assignFoyerToUniversite(@PathVariable("universite-id") Long idUniversite,
                                          @PathVariable("foyer-id") Long idFoyer) {
         universiteService.assignFoyerToUniversite(idUniversite,idFoyer);
@@ -49,5 +49,4 @@ public class UniversiteC {
     @PutMapping("/deaffecter-universite-a-foyer/{universite-id}")
     public void  enassignFoyerToUniversite(@PathVariable("universite-id") Long idUniversite) {
         universiteService.unassignFoyerToUniversite(idUniversite);
-    }*/
-}
+}}
