@@ -2,13 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo "Building the project on branch: ${env.BRANCH_NAME}"
-                sh './mvnw clean install'
-            }
-        }
-
         stage('Test') {
             steps {
                 echo "Running tests on branch: ${env.BRANCH_NAME}"
