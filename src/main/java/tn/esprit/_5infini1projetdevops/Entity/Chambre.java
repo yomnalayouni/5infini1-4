@@ -1,11 +1,13 @@
 package tn.esprit._5infini1projetdevops.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 @Getter
@@ -18,16 +20,15 @@ import java.util.Set;
 public class Chambre {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long idChambre;
-    private Long numeroChambre;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long idChambre;
+    @Column(unique = true)
+    long numeroChambre;
     @Enumerated(EnumType.STRING)
-    private TypeChambre typeC;
-
-    @ManyToOne
-    private Bloc bloc;
-
-
-    public void setId(Long idChambre) {
-    }
+    TypeChambre typeC;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    Bloc bloc;
+    @OneToMany
+    List<Reservation> reservations= new ArrayList<>();
 }
