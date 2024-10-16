@@ -1,4 +1,4 @@
-package tn.esprit._5infini1projetdevops.Services;
+package tn.esprit._5infini1projetdevops.services;
 
 import tn.esprit._5infini1projetdevops.Entity.Universite;
 
@@ -14,7 +14,7 @@ public interface IServiceUniversite {
     public Universite updateUniversite(Universite universite);
     public List<Universite> getAlluniversites();
     public Universite getuniversite (Long idUniversite);
-   public void  assignFoyerToUniversite(Long idUniversite, Long idFoyer);
-    public void unassignFoyerToUniversite(Long idUniversite);
+    // public void  assignFoyerToUniversite(Long idUniversite, Long idFoyer);
+   // public void unassignFoyerToUniversite(Long idUniversite);
 
 }

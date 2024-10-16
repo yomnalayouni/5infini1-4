@@ -18,9 +18,9 @@ public class Universite {
     String nomUniversite;
     String adresse;
 
-    @OneToOne(cascade = CascadeType.ALL)
-     public Foyer foyer;
-
+   /* @OneToOne(cascade = CascadeType.ALL)
+    Foyer foyer;
+*/
 
     public void setId(Long idUniversite) {
     }

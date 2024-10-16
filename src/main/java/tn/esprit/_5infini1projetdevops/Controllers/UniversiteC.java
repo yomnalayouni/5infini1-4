@@ -1,18 +1,12 @@
 package tn.esprit._5infini1projetdevops.Controllers;
 
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit._5infini1projetdevops.Services.ServiceUniversite;
 import tn.esprit._5infini1projetdevops.Entity.Universite;
-
+import tn.esprit._5infini1projetdevops.services.ServiceUniversite;
 
 import java.util.List;
 
-@RestController
-@AllArgsConstructor
-@RequestMapping("/universite")
-public class UniversiteRestControllor {
-
+public class UniversiteC {
     public ServiceUniversite universiteService;
 
     @GetMapping("/show-universite")
@@ -22,9 +16,9 @@ public class UniversiteRestControllor {
     }
 
     @GetMapping("/show-universiteid/{id}")
-    public List<Universite> getUniversite(@PathVariable ("id") Long idUniversite)
+    public List<UniversiteC> getUniversite(@PathVariable("id") Long idUniversite)
     {
-        return (List<Universite>) universiteService.getuniversite(idUniversite);
+        return (List<UniversiteC>) universiteService.getuniversite(idUniversite);
     }
 
     @PostMapping(path = "/add-universite")
@@ -40,14 +34,14 @@ public class UniversiteRestControllor {
     }
 
     @PutMapping(path = "/update-universite")
-    public Universite updateRUniversite(@RequestBody Universite c)
+    public UniversiteC updateRUniversite(@RequestBody UniversiteC c)
     {
 
-        Universite universite = universiteService.updateUniversite(c);
+        UniversiteC universite = universiteService.updateUniversite(c);
         return universite ;
     }
 
-    @PutMapping("/affecter-universite-a-foyer/{universite-id}/{foyer-id}")
+  /*  @PutMapping("/affecter-universite-a-foyer/{universite-id}/{foyer-id}")
     public void  assignFoyerToUniversite(@PathVariable("universite-id") Long idUniversite,
                                          @PathVariable("foyer-id") Long idFoyer) {
         universiteService.assignFoyerToUniversite(idUniversite,idFoyer);
@@ -55,6 +49,5 @@ public class UniversiteRestControllor {
     @PutMapping("/deaffecter-universite-a-foyer/{universite-id}")
     public void  enassignFoyerToUniversite(@PathVariable("universite-id") Long idUniversite) {
         universiteService.unassignFoyerToUniversite(idUniversite);
-    }
-
+    }*/
 }
