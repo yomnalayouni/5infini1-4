@@ -6,114 +6,28 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.Set;
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Entity
-    @ToString
-    @FieldDefaults(level = AccessLevel.PRIVATE)
-    @Table(name = "bloc")
-    public class Bloc {
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        Long idBloc;
-        String nomBloc;
-        Long capaciteBloc;
-
-        @ManyToOne
-        Foyer foyer;
-        @OneToMany (mappedBy = "bloc" , fetch = FetchType.EAGER)
-        Set<Chambre> chambres ;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Table(name = "bloc")
+public class Bloc {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long idBloc;
+    String nomBloc;
+    Long capaciteBloc;
+
+    @ManyToOne
+    Foyer foyer;
+    @OneToMany (mappedBy = "bloc" , fetch = FetchType.EAGER)
+    Set<Chambre> chambres ;
+
+
+
+}
 
