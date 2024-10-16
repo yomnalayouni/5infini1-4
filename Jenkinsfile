@@ -5,16 +5,13 @@ pipeline {
         stage('Hello') {
             steps {
                 echo "hellooo worldddd"
-                // Add your deployment logic here
             }
         }
-         stage('Checkout') {
+        stage('Checkout') {
             steps {
                 script {
                     echo "Checking out branch: ${env.BRANCH_NAME}"
-                    // Update the URL and branch name as needed
-                    git branch: 'main', url: 'https://github.com/yomnalayouni/5infini1-4.git', credentialsId: 'credJk'
-
+                    git branch: 'main', url: 'git@github.com:yomnalayouni/5infini1-4.git', credentialsId: 'credJk'
                 }
             }
         }
@@ -22,9 +19,7 @@ pipeline {
             steps {
                 script {
                     echo "Checking out branch: ${env.BRANCH_NAME}"
-                    // Update the URL and branch name as needed
-                    git branch: 'yomna-layouni-etudiant', url: 'https://github.com/yomnalayouni/5infini1-4.git', credentialsId: 'GitJen'
-
+                    git branch: 'yomna-layouni-etudiant', url: 'git@github.com:yomnalayouni/5infini1-4.git', credentialsId: 'GitJen'
                 }
             }
         }
