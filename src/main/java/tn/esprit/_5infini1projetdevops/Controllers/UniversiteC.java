@@ -16,9 +16,15 @@ public class UniversiteC {
     }
 
     @GetMapping("/show-universiteid/{id}")
+<<<<<<< HEAD
     public List<UniversiteC> getUniversite(@PathVariable("id") Long idUniversite)
     {
         return (List<UniversiteC>) universiteService.getuniversite(idUniversite);
+=======
+    public List<Universite> getUniversite(@PathVariable("id") Long idUniversite)
+    {
+        return (List<Universite>) universiteService.getuniversite(idUniversite);
+>>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
     }
 
     @PostMapping(path = "/add-universite")
@@ -34,10 +40,17 @@ public class UniversiteC {
     }
 
     @PutMapping(path = "/update-universite")
+<<<<<<< HEAD
     public UniversiteC updateRUniversite(@RequestBody UniversiteC c)
     {
 
         UniversiteC universite = universiteService.updateUniversite(c);
+=======
+    public Universite updateRUniversite(@RequestBody Universite c)
+    {
+
+        Universite universite = universiteService.updateUniversite(c);
+>>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
         return universite ;
     }
 

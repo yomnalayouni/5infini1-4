@@ -5,9 +5,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Table(name = "T_FOYER")
@@ -17,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Foyer implements Serializable {
+public class Foyer  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long idFoyer;

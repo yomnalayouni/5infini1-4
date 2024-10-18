@@ -3,6 +3,7 @@ package tn.esprit._5infini1projetdevops.services;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
 import tn.esprit._5infini1projetdevops.Entity.Reservation;
 import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
@@ -16,6 +17,17 @@ import tn.esprit.spring.DAO.Repositories.ChambreRepository;
 import tn.esprit.spring.DAO.Repositories.EtudiantRepository;
 import tn.esprit.spring.DAO.Repositories.FoyerRepository;
 import tn.esprit.spring.DAO.Repositories.ReservationRepository;
+=======
+import tn.esprit._5infini1projetdevops.Entity.Chambre;
+import tn.esprit._5infini1projetdevops.Entity.Etudiant;
+import tn.esprit._5infini1projetdevops.Entity.Reservation;
+import tn.esprit._5infini1projetdevops.Repository.ChambreRepository;
+import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
+import tn.esprit._5infini1projetdevops.Repository.ReservationRepository;
+
+
+
+>>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
 
 import java.time.LocalDate;
 import java.util.List;
@@ -53,7 +65,11 @@ public class ReservationService implements IReservationService {
         repo.delete(r);
     }
 
+<<<<<<< HEAD
     @Override
+=======
+   /* @Override
+>>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
     public Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(Long numChambre, long cin) {
         // Pour l’ajout de Réservation, l’id est un String et c’est la concaténation de "numeroChambre",
         // "nomBloc" et "cin". Aussi, l’ajout ne se fait que si la capacite maximale de la chambre est encore non atteinte.
@@ -115,6 +131,7 @@ public class ReservationService implements IReservationService {
         }
         return res;
     }
+<<<<<<< HEAD
 
     @Override
     public long getReservationParAnneeUniversitaire(LocalDate debutAnnee, LocalDate finAnnee) {
@@ -122,6 +139,15 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
+=======
+*/
+   /* @Override
+    public long getReservationParAnneeUniversitaire(LocalDate debutAnnee, LocalDate finAnnee) {
+        return repo.countByAnneeUniversitaireBetween(debutAnnee, finAnnee);
+    }
+*/
+  /*  @Override
+>>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
     public String annulerReservation(long cinEtudiant) {
         Reservation r = repo.findByEtudiantsCinAndEstValide(cinEtudiant, true);
         Chambre c = chambreRepository.findByReservationsIdReservation(r.getIdReservation());
@@ -130,8 +156,13 @@ public class ReservationService implements IReservationService {
         repo.delete(r);
         return "La réservation " + r.getIdReservation() + " est annulée avec succés";
     }
+<<<<<<< HEAD
 
     @Override
+=======
+*/
+   /* @Override
+>>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
     public void affectReservationAChambre(String idRes, long idChambre) {
         Reservation r = repo.findById(idRes).get();
         Chambre c = chambreRepository.findById(idChambre).get();
@@ -140,7 +171,11 @@ public class ReservationService implements IReservationService {
         c.getReservations().add(r);
         chambreRepository.save(c);
     }
+<<<<<<< HEAD
 
+=======
+*/
+>>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
     @Override
     public void annulerReservations() {
         // Début "récuperer l'année universitaire actuelle"

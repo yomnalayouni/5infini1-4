@@ -40,7 +40,11 @@ public class ReservationRestController {
         service.deleteById(id);
     }
 
+<<<<<<< HEAD
     @PostMapping("ajouterReservationEtAssignerAChambreEtAEtudiant")
+=======
+  /*  @PostMapping("ajouterReservationEtAssignerAChambreEtAEtudiant")
+>>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
     Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(@RequestParam Long numChambre, @RequestParam long cin) {
         return service.ajouterReservationEtAssignerAChambreEtAEtudiant(numChambre, cin);
     }
@@ -49,9 +53,17 @@ public class ReservationRestController {
     long getReservationParAnneeUniversitaire(@RequestParam LocalDate debutAnnee, @RequestParam LocalDate finAnnee) {
         return service.getReservationParAnneeUniversitaire(debutAnnee, finAnnee);
     }
+<<<<<<< HEAD
 
     @DeleteMapping("annulerReservation")
     String annulerReservation(@RequestParam long cinEtudiant) {
         return service.annulerReservation(cinEtudiant);
     }
+=======
+*/
+  /*  @DeleteMapping("annulerReservation")
+    String annulerReservation(@RequestParam long cinEtudiant) {
+        return service.annulerReservation(cinEtudiant);
+    }*/
+>>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
 }
