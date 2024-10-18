@@ -23,6 +23,7 @@ public class Foyer implements Serializable {
     long idFoyer;
     String nomFoyer;
     long capaciteFoyer;
+    // association
     @OneToOne(mappedBy = "foyer")
     Universite universite;
     @OneToMany(mappedBy = "foyer")
