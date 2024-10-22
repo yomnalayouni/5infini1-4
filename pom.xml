@@ -8,11 +8,11 @@
         <version>3.1.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>projetdevops</artifactId>
+    <groupId>tn.esprit</groupId>
+    <artifactId>_5infini1-projetdevops</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>projetdevops</name>
-    <description>projetdevops</description>
+    <name>5infini1-projetdevops</name>
+    <description>5infini1-projetdevops</description>
     <url/>
     <licenses>
         <license/>
@@ -53,6 +53,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
