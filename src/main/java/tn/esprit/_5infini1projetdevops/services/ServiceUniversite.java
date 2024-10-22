@@ -3,7 +3,9 @@ package tn.esprit._5infini1projetdevops.services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import tn.esprit._5infini1projetdevops.Repository.*z;
+import tn.esprit._5infini1projetdevops.Entity.Foyer;
+import tn.esprit._5infini1projetdevops.Repository.FoyerRepository;
+import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
 import tn.esprit._5infini1projetdevops.Entity.Universite;
 
 import java.util.List;
@@ -17,6 +19,7 @@ public class ServiceUniversite implements  IServiceUniversite{
 
         private UniversiteRepository universiteRepository;
         private FoyerRepository  foyerRepository ;
+
         @Override
         public Universite addUniversite(Universite universite) {
             return universiteRepository.save(universite);
