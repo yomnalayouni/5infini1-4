@@ -46,4 +46,12 @@ public class EtudiantRestControllor {
         Etudiant etudiant = etudiantService.addOrUpdate(e);
         return etudiant ;
     }
+        @PostMapping("/webhook")
+    public ResponseEntity<String> handleWebhook(@RequestBody String payload) {
+        // Traitez le webhook ici (vous pouvez parser le payload JSON et répondre)
+        System.out.println("Webhook reçu : " + payload);
+        return ResponseEntity.ok("Webhook reçu avec succès");
+    }
+   
+
 }
