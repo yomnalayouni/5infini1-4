@@ -4,8 +4,6 @@ package tn.esprit._5infini1projetdevops.Controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
-import tn.esprit._5infini1projetdevops.services.EtudiantService;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -47,12 +45,5 @@ public class EtudiantRestControllor {
         Etudiant etudiant = etudiantService.addOrUpdate(e);
         return etudiant ;
     }
-        @PostMapping("/webhook")
-    public ResponseEntity<String> handleWebhook(@RequestBody String payload) {
-        // Traitez le webhook ici (vous pouvez parser le payload JSON et répondre)
-        System.out.println("Webhook reçu : " + payload);
-        return ResponseEntity.ok("Webhook reçu avec succès");
-    }
-   
-
+      
 }
