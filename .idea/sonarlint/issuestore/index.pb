@@ -83,3 +83,6 @@ Y
 )src/test/java/ReservationServiceTest.java,8\1\8107ed8e8d9b7e68cb4b1509ec64076270a40300
 X
 (src/test/java/UniversityServiceTest.java,8\f\8f70faeebb964de6b8a10e5273ee92dd7daaec42
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
