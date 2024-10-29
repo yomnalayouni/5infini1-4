@@ -2,6 +2,7 @@ package tn.esprit._5infini1projetdevops.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import tn.esprit._5infini1projetdevops.Entity.Foyer;
 import tn.esprit._5infini1projetdevops.Entity.Universite;
 import tn.esprit._5infini1projetdevops.Repository.BlocRepository;
@@ -35,8 +36,8 @@ public class FoyerService implements FoyerServiceInter {
             return optionalFoyer.get();
         } else {
             throw new NoSuchElementException("Foyer with ID " + id + " not found.");
-        }
-    }
+        }}
+
 
     @Override
     public void deleteById(long id) {
@@ -65,6 +66,7 @@ public class FoyerService implements FoyerServiceInter {
             throw new NoSuchElementException("Universite with ID " + idUniversite + " not found.");
         }
     }
+
 
 
     @Override

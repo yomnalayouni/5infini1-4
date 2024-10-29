@@ -27,4 +27,5 @@ public class Reservation implements Serializable {
     @ManyToMany
     @JsonIgnore
     private List<Etudiant> etudiants = new ArrayList<>();
+
 }

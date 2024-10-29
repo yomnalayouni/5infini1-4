@@ -14,6 +14,12 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+
+
+
+import java.time.LocalDate;
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 @Slf4j
@@ -35,6 +41,7 @@ public class ReservationService implements IReservationService {
     @Override
     public Reservation findById(String id) {
         return repo.findById(id).orElse(null);
+
     }
 
     @Override
@@ -47,12 +54,14 @@ public class ReservationService implements IReservationService {
         repo.delete(r);
     }
 
+
     @Override
     public void annulerReservations() {
+        // Début "récuperer l'année universitaire actuelle"
         LocalDate dateDebutAU;
         LocalDate dateFinAU;
+        int numReservation;
         int year = LocalDate.now().getYear() % 100;
-
         if (LocalDate.now().getMonthValue() <= 7) {
             dateDebutAU = LocalDate.of(Integer.parseInt("20" + (year - 1)), 9, 15);
             dateFinAU = LocalDate.of(Integer.parseInt("20" + year), 6, 30);
@@ -60,31 +69,12 @@ public class ReservationService implements IReservationService {
             dateDebutAU = LocalDate.of(Integer.parseInt("20" + year), 9, 15);
             dateFinAU = LocalDate.of(Integer.parseInt("20" + (year + 1)), 6, 30);
         }
-
+        // Fin "récuperer l'année universitaire actuelle"
         for (Reservation reservation : repo.findByEstValideAndAnneeUniversitaireBetween(true, dateDebutAU, dateFinAU)) {
             reservation.setEstValide(false);
             repo.save(reservation);
-            log.info("La reservation " + reservation.getIdReservation() + " est annulée automatiquement");
+            log.info("La reservation "+ reservation.getIdReservation()+" est annulée automatiquement");
         }
     }
 
-    
-    public Universite getuniversite(Long idUniversite) {
-        return universiteRepository.findById(idUniversite)
-                .orElseThrow(() -> new NoSuchElementException("Université with ID " + idUniversite + " not found"));
-    }
-   
-   public void assignFoyerToUniversite(Long idUniversite, Foyer foyer) {
-        Universite universite = universiteRepository.findById(idUniversite)
-                .orElseThrow(() -> new NoSuchElementException("Université not found"));
-        universite.setFoyer(foyer);
-        universiteRepository.save(universite);
-    }
-   
-   public void unassignFoyerToUniversite(Long idUniversite) {
-        Universite universite = universiteRepository.findById(idUniversite)
-                .orElseThrow(() -> new NoSuchElementException("Université not found"));
-        universite.setFoyer(null);
-        universiteRepository.save(universite);
-    }
 }

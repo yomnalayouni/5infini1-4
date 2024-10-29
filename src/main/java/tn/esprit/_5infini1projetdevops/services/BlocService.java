@@ -44,6 +44,7 @@ public class BlocService {
    }
 
 
+
     @Scheduled(fixedDelay = 15000)
 
     public List<Bloc> getAllblocs() {
@@ -61,6 +62,7 @@ public class BlocService {
     return blocRepository.findById(idBloc).orElseThrow(() -> new IllegalArgumentException("Bloc with ID " + idBloc + " not found"));
 }
 
+    
 
 
     public List<Bloc> trouverBlocsParNomEtCap(String c, Long b) {

@@ -7,19 +7,19 @@ import tn.esprit._5infini1projetdevops.services.BlocService;
 import java.util.List;
 
 public class BlocRestControllor {
-   
-    public BlocService blocService;
 
+    public BlocService blocService ;
     @PostMapping(path = "/add-bloc")
     public Bloc addBloc (@RequestBody Bloc bloc)
     {
         return blocService.addBloc(bloc);
     }
 
-   @GetMapping("/show-bloc")
-public List<Bloc> getAllblocs() {
-    return blocService.getAllblocs();
-}
+    @GetMapping("/show-bloc")
+    public List<Bloc> getAllblocs() {
+        List<Bloc> listBlocs = blocService.getAllblocs();
+        return listBlocs;
+    }
 
     @GetMapping("/show-blocid/{id}")
     public List<Bloc> gelBloc(@PathVariable("id") Long idBloc)
@@ -35,11 +35,14 @@ public List<Bloc> getAllblocs() {
     }
 
 
-   @PutMapping(path = "/update-bloc")
-public Bloc updateBloc(@RequestBody Bloc b) {
-    return blocService.updateBloc(b);
-}
 
+    @PutMapping(path = "/update-bloc")
+    public Bloc updateBloc(@RequestBody Bloc b)
+    {
+
+        Bloc bloc = blocService.updateBloc(b);
+        return bloc ;
+    }
 
     @GetMapping("/show-blocandcapacite/{c}/{b}")
     public void recuperBlocsParNomEtCap(@PathVariable ("c") String c,

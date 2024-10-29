@@ -8,6 +8,10 @@ import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
 import tn.esprit._5infini1projetdevops.Entity.Universite;
 
 import java.util.List;
+
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @AllArgsConstructor
 @Service
 
@@ -41,25 +45,48 @@ public class ServiceUniversite implements  IServiceUniversite{
             return universiteRepository.findAll();
         }
 
-        @Override
-        public Universite getuniversite(Long idUniversite) {
-            return universiteRepository.findById(idUniversite).get();
+    @Override
+    public Universite getuniversite(Long idUniversite) {
+        Optional<Universite> optionalUniversite = universiteRepository.findById(idUniversite);
+        if (optionalUniversite.isPresent()) {
+            return optionalUniversite.get();
+        } else {
+            throw new NoSuchElementException("No found with id: " + idUniversite);
+        }
+    }
+
+
+    public void assignFoyerToUniversite(Long idUniversite, Long idFoyer) {
+        Optional<Universite> optionalUniversite = universiteRepository.findById(idUniversite);
+        if (!optionalUniversite.isPresent()) {
+            throw new NoSuchElementException("No Universite found with id: " + idUniversite);
         }
 
-        public void assignFoyerToUniversite(Long idUniversite, Long idFoyer) {
-            Universite universite = universiteRepository.findById(idUniversite).get();
-            Foyer foyer = foyerRepository.findById(idFoyer).get();
-// on set le fils dans le parent :
-            universite.setFoyer(foyer);
-            universiteRepository.save(universite);
-        }
-        public void unassignFoyerToUniversite(Long idUniversite) {
-            Universite universite = universiteRepository.findById(idUniversite).get();
-            //Foyer foyer = foyerRepository.findById(idFoyer).get();
-// on set le fils dans le parent :
-            universite.setFoyer(null);
-            universiteRepository.save(universite);
+        Optional<Foyer> optionalFoyer = foyerRepository.findById(idFoyer);
+        if (!optionalFoyer.isPresent()) {
+            throw new NoSuchElementException("No Foyer found with id: " + idFoyer);
         }
 
+        Universite universite = optionalUniversite.get();
+        Foyer foyer = optionalFoyer.get();
+
+        // Set the Foyer in the Universite
+        universite.setFoyer(foyer);
+        universiteRepository.save(universite);
+    }
+
+    public void unassignFoyerToUniversite(Long idUniversite) {
+        Optional<Universite> optionalUniversite = universiteRepository.findById(idUniversite);
+
+        if (!optionalUniversite.isPresent()) {
+            throw new NoSuchElementException("No Universite found with id: " + idUniversite);
+        }
+
+        Universite universite = optionalUniversite.get();
+
+        // Set the Foyer to null
+        universite.setFoyer(null);
+        universiteRepository.save(universite);
+    }
 
 }

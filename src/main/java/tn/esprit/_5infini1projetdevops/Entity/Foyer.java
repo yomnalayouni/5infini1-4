@@ -27,4 +27,5 @@ public class Foyer implements Serializable {
     transient Universite universite;
     @OneToMany(mappedBy = "foyer")
     transient List<Bloc> blocs = new ArrayList<>();
+
 }
