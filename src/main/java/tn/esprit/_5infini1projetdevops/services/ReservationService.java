@@ -4,11 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.esprit._5infini1projetdevops.Entity.Reservation;
+import tn.esprit._5infini1projetdevops.Entity.Universite;
 import tn.esprit._5infini1projetdevops.Repository.ChambreRepository;
 import tn.esprit._5infini1projetdevops.Repository.ReservationRepository;
+import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
@@ -16,6 +19,7 @@ import java.util.List;
 public class ReservationService implements IReservationService {
     ReservationRepository repo;
     ChambreRepository chambreRepository;
+    UniversiteRepository universiteRepository;
 
     @Override
     public Reservation addOrUpdate(Reservation r) {
@@ -44,7 +48,6 @@ public class ReservationService implements IReservationService {
 
     @Override
     public void annulerReservations() {
-        // Début "récuperer l'année universitaire actuelle"
         LocalDate dateDebutAU;
         LocalDate dateFinAU;
         int year = LocalDate.now().getYear() % 100;
@@ -56,12 +59,17 @@ public class ReservationService implements IReservationService {
             dateDebutAU = LocalDate.of(Integer.parseInt("20" + year), 9, 15);
             dateFinAU = LocalDate.of(Integer.parseInt("20" + (year + 1)), 6, 30);
         }
-        // Fin "récuperer l'année universitaire actuelle"
 
         for (Reservation reservation : repo.findByEstValideAndAnneeUniversitaireBetween(true, dateDebutAU, dateFinAU)) {
             reservation.setEstValide(false);
             repo.save(reservation);
             log.info("La reservation " + reservation.getIdReservation() + " est annulée automatiquement");
         }
+    }
+
+    @Override
+    public Universite getuniversite(Long idUniversite) {
+        return universiteRepository.findById(idUniversite)
+                .orElseThrow(() -> new NoSuchElementException("Université with ID " + idUniversite + " not found"));
     }
 }
