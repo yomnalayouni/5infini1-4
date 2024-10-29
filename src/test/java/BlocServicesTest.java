@@ -1,4 +1,3 @@
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,14 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class BlocServicesTest {
+public class BlocServiceTest {
 
     @Mock
     private BlocRepository blocRepository;
@@ -48,37 +46,50 @@ public class BlocServicesTest {
 
         // Assert
         assertEquals(bloc, savedBloc);
+        verify(blocRepository, times(1)).save(bloc);
     }
 
-    /*@Test
-    public void testUpdateBloc() {
-        // Arrange
-        when(blocRepository.save(any(Bloc.class))).thenReturn(bloc);
-
-        // Act
-        Bloc updatedBloc = new Bloc();
-        updatedBloc.setIdBloc(1L);
-        updatedBloc.setNomBloc("Updated Bloc A");
-        Bloc savedBloc = blocService.updateBloc(updatedBloc);
-
-        // Assert
-        assertEquals("Updated Bloc A", savedBloc.getNomBloc());
-    }
-*/
     @Test
-    public void testUpdateBloc() {
+    public void testDeleteBloc() {
+        // Act
+        blocService.deleteBloc(1L);
+
+        // Assert
+        verify(blocRepository, times(1)).deleteById(1L);
+    }
+
+    @Test
+    public void testUpdateBlocSuccess() {
         // Arrange
-        when(blocRepository.findById(1L)).thenReturn(Optional.of(bloc));  // Ajoutez ceci pour simuler la récupération du bloc existant
+        when(blocRepository.findById(1L)).thenReturn(Optional.of(bloc));
         when(blocRepository.save(any(Bloc.class))).thenReturn(bloc);
 
         // Act
         Bloc updatedBloc = new Bloc();
         updatedBloc.setIdBloc(1L);
         updatedBloc.setNomBloc("Updated Bloc A");
-        Bloc savedBloc = blocService.updateBloc(updatedBloc);
+        updatedBloc.setCapaciteBloc(60L);
+        Bloc result = blocService.updateBloc(updatedBloc);
 
         // Assert
-        assertEquals("Updated Bloc A", savedBloc.getNomBloc());
+        assertEquals("Updated Bloc A", result.getNomBloc());
+        assertEquals(60L, result.getCapaciteBloc());
+        verify(blocRepository, times(1)).findById(1L);
+        verify(blocRepository, times(1)).save(bloc);
+    }
+
+    @Test
+    public void testUpdateBlocNotFound() {
+        // Arrange
+        when(blocRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        // Act & Assert
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            blocService.updateBloc(bloc);
+        });
+        assertEquals("Bloc not found", exception.getMessage());
+        verify(blocRepository, times(1)).findById(1L);
+        verify(blocRepository, never()).save(any(Bloc.class));
     }
 
     @Test
@@ -94,10 +105,11 @@ public class BlocServicesTest {
         // Assert
         assertEquals(1, result.size());
         assertEquals(bloc, result.get(0));
+        verify(blocRepository, times(1)).findAll();
     }
 
     @Test
-    public void testGetBloc() {
+    public void testGetBlocByIdSuccess() {
         // Arrange
         when(blocRepository.findById(1L)).thenReturn(Optional.of(bloc));
 
@@ -106,17 +118,19 @@ public class BlocServicesTest {
 
         // Assert
         assertEquals(bloc, result);
+        verify(blocRepository, times(1)).findById(1L);
     }
 
     @Test
-    public void testDeleteBloc() {
+    public void testGetBlocByIdNotFound() {
         // Arrange
+        when(blocRepository.findById(1L)).thenReturn(Optional.empty());
 
         // Act
-        blocService.deleteBloc(1L);
+        Bloc result = blocService.getbloc(1L);
 
         // Assert
-        verify(blocRepository, times(1)).deleteById(1L);
+        assertNull(result);
     }
 
     @Test
@@ -132,5 +146,6 @@ public class BlocServicesTest {
         // Assert
         assertEquals(1, result.size());
         assertEquals(bloc, result.get(0));
+        verify(blocRepository, times(1)).findAllByNomBlocIsAndCapaciteBloc("Bloc A", 50L);
     }
 }
