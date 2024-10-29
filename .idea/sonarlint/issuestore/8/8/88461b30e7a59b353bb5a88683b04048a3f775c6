@@ -1,9 +1,0 @@
-
-}
-java:S1488"gImmediately return this expression instead of assigning it to the temporary variable "listUniversites".(ëÙ³Ó
-x
-java:S1488("bImmediately return this expression instead of assigning it to the temporary variable "universite".(Äåí
-s
-java:S1104
-"]Make universiteService a static final constant or non-public and provide accessors if needed.(£¥ªØ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯İ©¨ıÿÿÿÿ
