@@ -29,7 +29,7 @@ class EtudiantServiceTest {
     private Etudiant etudiant;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         etudiant = new Etudiant();
         etudiant.setIdEtudiant(1L);
         etudiant.setNomEt("Test Name");
@@ -37,7 +37,7 @@ class EtudiantServiceTest {
     }
 
     @Test
-    public void testAddOrUpdate() {
+     void testAddOrUpdate() {
         // Arrange
         when(repo.save(any(Etudiant.class))).thenReturn(etudiant);
 
@@ -50,7 +50,7 @@ class EtudiantServiceTest {
     }
 
     @Test
-    public void testFindAll() {
+     void testFindAll() {
         // Arrange
         List<Etudiant> etudiants = Arrays.asList(etudiant);
         when(repo.findAll()).thenReturn(etudiants);
@@ -63,7 +63,7 @@ class EtudiantServiceTest {
     }
 
     @Test
-    public void testFindById() {
+    void testFindById() {
         // Arrange
         when(repo.findById(1L)).thenReturn(Optional.of(etudiant));
 
@@ -75,7 +75,7 @@ class EtudiantServiceTest {
     }
 
     @Test
-    public void testDeleteById() {
+     void testDeleteById() {
         // Arrange
         Long id = 1L;
 
@@ -87,7 +87,7 @@ class EtudiantServiceTest {
     }
 
     @Test
-    public void testDelete() {
+     void testDelete() {
         // Arrange
         // No specific setup needed, just use the existing etudiant object
 
