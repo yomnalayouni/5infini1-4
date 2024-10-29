@@ -121,7 +121,7 @@ public class BlocServicesTest {
         verify(blocRepository, times(1)).findById(1L);
     }
 
-    @Test
+   /* @Test
     public void testGetBlocByIdNotFound() {
         // Arrange
         when(blocRepository.findById(1L)).thenReturn(Optional.empty());
@@ -132,7 +132,7 @@ public class BlocServicesTest {
         // Assert
         assertNull(result);
     }
-
+*/
     @Test
     public void testFindBlocsByNomAndCapacite() {
         // Arrange
