@@ -84,3 +84,11 @@ U
 %.mvn/wrapper/maven-wrapper.properties,3\2\32e074f71d16c1e88ac02aa83592ca6ad1fd98a8
 S
 #src/test/java/BlocServicesTest.java,7\2\725f67aab9a1e8c5d903591cc789e3e23d70aa0f
+V
+&src/test/java/EtudiantServiceTest.java,c\1\c1e5c0a328e318d03ddb35278f428bb9e537e133
+S
+#src/test/java/FoyerServiceTest.java,8\a\8af814b39bac8240fab0982fa2f5966ce8c2565e
+Y
+)src/test/java/ReservationServiceTest.java,8\1\8107ed8e8d9b7e68cb4b1509ec64076270a40300
+X
+(src/test/java/UniversityServiceTest.java,8\f\8f70faeebb964de6b8a10e5273ee92dd7daaec42
