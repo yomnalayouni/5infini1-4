@@ -73,14 +73,14 @@ public class ReservationService implements IReservationService {
         return universiteRepository.findById(idUniversite)
                 .orElseThrow(() -> new NoSuchElementException("Université with ID " + idUniversite + " not found"));
     }
-
+   @Override
    public void assignFoyerToUniversite(Long idUniversite, Foyer foyer) {
         Universite universite = universiteRepository.findById(idUniversite)
                 .orElseThrow(() -> new NoSuchElementException("Université not found"));
         universite.setFoyer(foyer);
         universiteRepository.save(universite);
     }
-
+   @Override
    public void unassignFoyerToUniversite(Long idUniversite) {
         Universite universite = universiteRepository.findById(idUniversite)
                 .orElseThrow(() -> new NoSuchElementException("Université not found"));
