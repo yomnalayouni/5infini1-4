@@ -7,7 +7,9 @@ import tn.esprit._5infini1projetdevops.services.BlocService;
 import java.util.List;
 
 public class BlocRestControllor {
-    private final BlocService blocService;
+   @Autowired
+    private BlocService blocService;
+
     @PostMapping(path = "/add-bloc")
     public Bloc addBloc (@RequestBody Bloc bloc)
     {
