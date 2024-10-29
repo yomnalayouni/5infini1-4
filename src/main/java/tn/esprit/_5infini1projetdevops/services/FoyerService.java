@@ -46,58 +46,50 @@ public class FoyerService implements FoyerServiceInter {
         }
 =======
 
-    @Override
-    public Foyer findById(long id) {
-        return repo.findById(id).get();
->>>>>>> university
-    }
-
-    @Override
-    public void deleteById(long id) {
-        repo.deleteById(id);
-    }
-
-    @Override
-    public void delete(Foyer f) {
-        repo.delete(f);
-    }
-
-    @Override
-    public Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite) {
-        return null;
-    }
-
-
-    @Override
-    public Universite desaffecterFoyerAUniversite(long idUniversite) {
-<<<<<<< HEAD
-        Optional<Universite> optionalUniversite = universiteRepository.findById(idUniversite);
-        if (optionalUniversite.isPresent()) {
-            Universite u = optionalUniversite.get();
-            u.setFoyer(null);
-            return universiteRepository.save(u);
-        } else {
-            throw new NoSuchElementException("Universite with ID " + idUniversite + " not found.");
+        @Override
+        public Foyer findById ( long id){
+            return repo.findById(id).get();
+>>>>>>>university
         }
-    }
+
+        @Override
+        public void deleteById ( long id){
+            repo.deleteById(id);
+        }
+
+        @Override
+        public void delete (Foyer f){
+            repo.delete(f);
+        }
+
+        @Override
+        public Universite affecterFoyerAUniversite ( long idFoyer, String nomUniversite){
+            return null;
+        }
 
 
-=======
-        Universite u = universiteRepository.findById(idUniversite).get(); // Parent
-        u.setFoyer(null);
-        return universiteRepository.save(u);
-    }
-
->>>>>>> university
-    @Override
-    public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite) {
-        return null;
-    }
-
-    @Override
-    public Foyer ajoutFoyerEtBlocs(Foyer foyer) {
-        return null;
-    }
+        @Override
+        public Universite desaffecterFoyerAUniversite ( long idUniversite){
+            Optional<Universite> optionalUniversite = universiteRepository.findById(idUniversite);
+            if (optionalUniversite.isPresent()) {
+                Universite u = optionalUniversite.get();
+                u.setFoyer(null);
+                return universiteRepository.save(u);
+            } else {
+                throw new NoSuchElementException("Universite with ID " + idUniversite + " not found.");
+            }
+        }
 
 
-}
+        @Override
+        public Foyer ajouterFoyerEtAffecterAUniversite (Foyer foyer,long idUniversite){
+            return null;
+        }
+
+        @Override
+        public Foyer ajoutFoyerEtBlocs (Foyer foyer){
+            return null;
+        }
+
+
+    }}
