@@ -16,11 +16,13 @@
 
     <version>0.0.6-SNAPSHOT</version>
 
+
     <name>5infini1-projetdevops</name>
     <description>5infini1-projetdevops</description>
 
     <properties>
         <java.version>17</java.version>
+        <sonar.jacoco.reportPaths>${project.build.directory}/jacoco.exec</sonar.jacoco.reportPaths>
     </properties>
 
     <dependencies>
@@ -67,7 +69,6 @@
         </dependency>
 
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -107,4 +108,7 @@
     </build>
 
 
+
+
 </project>
+

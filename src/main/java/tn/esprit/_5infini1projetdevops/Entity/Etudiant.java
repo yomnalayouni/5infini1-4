@@ -1,8 +1,5 @@
 package tn.esprit._5infini1projetdevops.Entity;
-<<<<<<< HEAD
-=======
 
->>>>>>> 9d3bef7087e220897522bd8fafe53b3ceac046e5
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -30,7 +27,8 @@ public class Etudiant implements Serializable {
     String ecole;
     LocalDate dateNaissance;
     @ManyToMany(mappedBy = "etudiants")
-    List<Reservation> reservations= new ArrayList<>();
+    private List<Reservation> reservations = new ArrayList<>();
+
 
 
 }

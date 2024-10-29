@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
 import tn.esprit._5infini1projetdevops.services.EtudiantService;
-
+import tn.esprit._5infini1projetdevops.services.IEtudiantService;
 import java.util.List;
 
 @RestController
@@ -13,14 +13,13 @@ import java.util.List;
 @RequestMapping("/etudiant")
 public class EtudiantRestControllor {
 
-    public EtudiantService etudiantService ;
+   public final IEtudiantService etudiantService;
 
-    @GetMapping("/show-etudiant")
+     @GetMapping("/show-etudiant")
     public List<Etudiant> getAlletudiants() {
-        List<Etudiant> listEtudiants = etudiantService.findAll();
-        return listEtudiants;
+        return etudiantService.findAll();
     }
-
+    
     @GetMapping("/show-etudiantid/{id}")
     public List<Etudiant> getEtudiant(@PathVariable("id") Long idEtudiant)
     {
@@ -40,10 +39,8 @@ public class EtudiantRestControllor {
     }
 
     @PutMapping(path = "/update-etudiant")
-    public Etudiant updateBloc(@RequestBody Etudiant e )
-    {
-
-        Etudiant etudiant = etudiantService.addOrUpdate(e);
-        return etudiant ;
+    public Etudiant updateBloc(@RequestBody Etudiant e) 
+   {
+        return etudiantService.addOrUpdate(e);
     }
 }
