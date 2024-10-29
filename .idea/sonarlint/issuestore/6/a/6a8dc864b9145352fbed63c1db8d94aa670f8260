@@ -1,8 +1,0 @@
-
-z
-java:S1488"dImmediately return this expression instead of assigning it to the temporary variable "listChambres".(×ÐŠê
-z
-java:S1488/"_Immediately return this expression instead of assigning it to the temporary variable "chambre".(¡¾´ƒùÿÿÿÿ
-p
-java:S1104"ZMake chambreService a static final constant or non-public and provide accessors if needed.(„Ðò˜
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯Ý©¨ýÿÿÿÿ
