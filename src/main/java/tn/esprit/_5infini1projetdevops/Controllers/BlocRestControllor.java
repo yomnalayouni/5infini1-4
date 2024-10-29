@@ -35,13 +35,11 @@ public List<Bloc> getAllblocs() {
     }
 
 
-    @PutMapping(path = "/update-bloc")
-    public Bloc updateBloc(@RequestBody Bloc b)
-    {
+   @PutMapping(path = "/update-bloc")
+public Bloc updateBloc(@RequestBody Bloc b) {
+    return blocService.updateBloc(b);
+}
 
-        Bloc bloc = blocService.updateBloc(b);
-        return bloc ;
-    }
 
     @GetMapping("/show-blocandcapacite/{c}/{b}")
     public void recuperBlocsParNomEtCap(@PathVariable ("c") String c,
