@@ -1,10 +1,18 @@
 package tn.esprit._5infini1projetdevops.Controllers;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> university
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._5infini1projetdevops.Entity.Reservation;
 import tn.esprit._5infini1projetdevops.services.IReservationService;
 
+<<<<<<< HEAD
+=======
+import java.time.LocalDate;
+>>>>>>> university
 import java.util.List;
 
 @RestController
@@ -37,4 +45,22 @@ public class ReservationRestController {
     void deleteById(@RequestParam String id) {
         service.deleteById(id);
     }
+<<<<<<< HEAD
+=======
+
+  /*  @PostMapping("ajouterReservationEtAssignerAChambreEtAEtudiant")
+    Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(@RequestParam Long numChambre, @RequestParam long cin) {
+        return service.ajouterReservationEtAssignerAChambreEtAEtudiant(numChambre, cin);
+    }
+
+    @GetMapping("getReservationParAnneeUniversitaire")
+    long getReservationParAnneeUniversitaire(@RequestParam LocalDate debutAnnee, @RequestParam LocalDate finAnnee) {
+        return service.getReservationParAnneeUniversitaire(debutAnnee, finAnnee);
+    }
+*/
+  /*  @DeleteMapping("annulerReservation")
+    String annulerReservation(@RequestParam long cinEtudiant) {
+        return service.annulerReservation(cinEtudiant);
+    }*/
+>>>>>>> university
 }
