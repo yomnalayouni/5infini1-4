@@ -121,18 +121,7 @@ import static org.mockito.Mockito.*;
         verify(blocRepository, times(1)).findById(1L);
     }
 
-   /* @Test
-    public void testGetBlocByIdNotFound() {
-        // Arrange
-        when(blocRepository.findById(1L)).thenReturn(Optional.empty());
-
-        // Act
-        Bloc result = blocService.getbloc(1L);
-
-        // Assert
-        assertNull(result);
-    }
-*/
+  
     @Test
      void testFindBlocsByNomAndCapacite() {
         // Arrange
