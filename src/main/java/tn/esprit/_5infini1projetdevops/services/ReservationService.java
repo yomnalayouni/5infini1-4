@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.esprit._5infini1projetdevops.Entity.Reservation;
 import tn.esprit._5infini1projetdevops.Entity.Universite;
+import tn.esprit._5infini1projetdevops.Entity.Foyer;
 import tn.esprit._5infini1projetdevops.Repository.ChambreRepository;
 import tn.esprit._5infini1projetdevops.Repository.ReservationRepository;
 import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
