@@ -29,9 +29,7 @@ public class BlocService {
     }
 
 
-   /* public Bloc updateBloc(Bloc bloc) {
-        return blocRepository.save(bloc);
-    }*/
+   
    public Bloc updateBloc(Bloc bloc) {
        // Récupérer le bloc existant depuis la base de données
        Bloc existingBloc = blocRepository.findById(bloc.getIdBloc())
@@ -60,8 +58,9 @@ public class BlocService {
 
 
     public Bloc getbloc(Long idBloc) {
-        return blocRepository.findById(idBloc).get();
-    }
+    return blocRepository.findById(idBloc).orElseThrow(() -> new IllegalArgumentException("Bloc with ID " + idBloc + " not found"));
+}
+
 
 
     public List<Bloc> trouverBlocsParNomEtCap(String c, Long b) {

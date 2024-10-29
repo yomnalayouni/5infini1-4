@@ -18,7 +18,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class BlocServicesTest {
+ class BlocServicesTest {
 
     @Mock
     private BlocRepository blocRepository;
@@ -29,7 +29,7 @@ public class BlocServicesTest {
     private Bloc bloc;
 
     @BeforeEach
-    public void setUp() {
+     void setUp() {
         bloc = new Bloc();
         bloc.setIdBloc(1L);
         bloc.setNomBloc("Bloc A");
@@ -37,7 +37,7 @@ public class BlocServicesTest {
     }
 
     @Test
-    public void testAddBloc() {
+     void testAddBloc() {
         // Arrange
         when(blocRepository.save(any(Bloc.class))).thenReturn(bloc);
 
@@ -50,7 +50,7 @@ public class BlocServicesTest {
     }
 
     @Test
-    public void testDeleteBloc() {
+     void testDeleteBloc() {
         // Act
         blocService.deleteBloc(1L);
 
@@ -59,7 +59,7 @@ public class BlocServicesTest {
     }
 
     @Test
-    public void testUpdateBlocSuccess() {
+     void testUpdateBlocSuccess() {
         // Arrange
         when(blocRepository.findById(1L)).thenReturn(Optional.of(bloc));
         when(blocRepository.save(any(Bloc.class))).thenReturn(bloc);
@@ -79,7 +79,7 @@ public class BlocServicesTest {
     }
 
     @Test
-    public void testUpdateBlocNotFound() {
+     void testUpdateBlocNotFound() {
         // Arrange
         when(blocRepository.findById(anyLong())).thenReturn(Optional.empty());
 
@@ -93,7 +93,7 @@ public class BlocServicesTest {
     }
 
     @Test
-    public void testGetAllBlocs() {
+     void testGetAllBlocs() {
         // Arrange
         List<Bloc> blocs = new ArrayList<>();
         blocs.add(bloc);
@@ -109,7 +109,7 @@ public class BlocServicesTest {
     }
 
     @Test
-    public void testGetBlocByIdSuccess() {
+     void testGetBlocByIdSuccess() {
         // Arrange
         when(blocRepository.findById(1L)).thenReturn(Optional.of(bloc));
 
@@ -121,20 +121,9 @@ public class BlocServicesTest {
         verify(blocRepository, times(1)).findById(1L);
     }
 
-   /* @Test
-    public void testGetBlocByIdNotFound() {
-        // Arrange
-        when(blocRepository.findById(1L)).thenReturn(Optional.empty());
-
-        // Act
-        Bloc result = blocService.getbloc(1L);
-
-        // Assert
-        assertNull(result);
-    }
-*/
+  
     @Test
-    public void testFindBlocsByNomAndCapacite() {
+     void testFindBlocsByNomAndCapacite() {
         // Arrange
         List<Bloc> blocs = new ArrayList<>();
         blocs.add(bloc);
