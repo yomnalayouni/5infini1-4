@@ -13,17 +13,14 @@ import tn.esprit._5infini1projetdevops.Repository.FoyerRepository;
 import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
 import tn.esprit._5infini1projetdevops.services.FoyerService;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class FoyerServiceTest {
+ class FoyerServiceTest {
 
     @Mock
     private FoyerRepository foyerRepository;
@@ -47,7 +44,7 @@ public class FoyerServiceTest {
         foyer.setIdFoyer(1L);
         foyer.setNomFoyer("Foyer A");
         foyer.setCapaciteFoyer(50L);
-        foyer.setBlocs(new ArrayList<>()); // Change to ArrayList
+        foyer.setBlocs(new ArrayList<>());
 
         universite = new Universite();
         universite.setIdUniversite(1L);
@@ -58,11 +55,20 @@ public class FoyerServiceTest {
         bloc.setNomBloc("Bloc 1");
 
         foyer.setUniversite(universite);
-        foyer.getBlocs().add(bloc); // Now, foyer.getBlocs() is a List
+        foyer.getBlocs().add(bloc);
     }
 
     @Test
-    public void testAddOrUpdate() {
+    void testFindById_NotFound() {
+        // Arrange
+        when(foyerRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        // Act & Assert
+        assertThrows(NoSuchElementException.class, () -> foyerService.findById(999L));
+    }
+
+    @Test
+    void testAddOrUpdate() {
         // Arrange
         when(foyerRepository.save(any(Foyer.class))).thenReturn(foyer);
 
@@ -71,10 +77,11 @@ public class FoyerServiceTest {
 
         // Assert
         assertEquals(foyer, savedFoyer);
+        verify(foyerRepository, times(1)).save(foyer);
     }
 
     @Test
-    public void testFindAll() {
+    void testFindAll() {
         // Arrange
         List<Foyer> foyers = new ArrayList<>();
         foyers.add(foyer);
@@ -89,7 +96,7 @@ public class FoyerServiceTest {
     }
 
     @Test
-    public void testFindById() {
+    void testFindById() {
         // Arrange
         when(foyerRepository.findById(1L)).thenReturn(Optional.of(foyer));
 
@@ -101,7 +108,7 @@ public class FoyerServiceTest {
     }
 
     @Test
-    public void testDeleteById() {
+    void testDeleteById() {
         // Act
         foyerService.deleteById(1L);
 
@@ -110,7 +117,7 @@ public class FoyerServiceTest {
     }
 
     @Test
-    public void testDelete() {
+    void testDelete() {
         // Act
         foyerService.delete(foyer);
 
@@ -119,7 +126,7 @@ public class FoyerServiceTest {
     }
 
     @Test
-    public void testDesaffecterFoyerAUniversite() {
+    void testDesaffecterFoyerAUniversite() {
         // Arrange
         when(universiteRepository.findById(1L)).thenReturn(Optional.of(universite));
         when(universiteRepository.save(any(Universite.class))).thenReturn(universite);
@@ -128,9 +135,46 @@ public class FoyerServiceTest {
         Universite updatedUniversite = foyerService.desaffecterFoyerAUniversite(1L);
 
         // Assert
-        assertEquals(null, updatedUniversite.getFoyer());
+        assertNull(updatedUniversite.getFoyer());
     }
 
+    @Test
+    void testDesaffecterFoyerAUniversite_NotFound() {
+        // Arrange
+        when(universiteRepository.findById(anyLong())).thenReturn(Optional.empty());
 
+        // Act & Assert
+        assertThrows(NoSuchElementException.class, () -> foyerService.desaffecterFoyerAUniversite(999L));
+    }
 
+    @Test
+    void testAffecterFoyerAUniversite() {
+        Universite result = foyerService.affecterFoyerAUniversite(1L, "Université XYZ");
+        assertNull(result);  // Method currently returns null
+    }
+
+    @Test
+    void testAjouterFoyerEtAffecterAUniversite() {
+        Foyer result = foyerService.ajouterFoyerEtAffecterAUniversite(foyer, 1L);
+        assertNull(result);  // Method currently returns null
+    }
+
+    @Test
+    void testAjoutFoyerEtBlocs() {
+        Foyer result = foyerService.ajoutFoyerEtBlocs(foyer);
+        assertNull(result);  // Method currently returns null
+    }
+
+    @Test
+    void testAddOrUpdate_MinCapacity() {
+        // Arrange
+        foyer.setCapaciteFoyer(0L); // Edge case: minimum capacity
+        when(foyerRepository.save(any(Foyer.class))).thenReturn(foyer);
+
+        // Act
+        Foyer result = foyerService.addOrUpdate(foyer);
+
+        // Assert
+        assertEquals(0L, result.getCapaciteFoyer());
+    }
 }

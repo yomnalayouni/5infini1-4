@@ -7,6 +7,9 @@ import tn.esprit._5infini1projetdevops.Repository.ChambreRepository;
 
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @AllArgsConstructor
 @Service
 public class ChambreServiceImpl implements IChambreService{
@@ -36,6 +39,12 @@ public class ChambreServiceImpl implements IChambreService{
 
     @Override
     public Chambre getchambre(Long idChambre) {
-        return chambreRepository.findById(idChambre).get();
+        Optional<Chambre> optionalChambre = chambreRepository.findById(idChambre);
+        if (optionalChambre.isPresent()) {
+            return optionalChambre.get();
+        } else {
+            throw new NoSuchElementException("Chambre with ID " + idChambre + " not found.");
+        }
     }
+
 }
