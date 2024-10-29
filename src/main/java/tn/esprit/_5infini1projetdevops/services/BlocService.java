@@ -29,9 +29,7 @@ public class BlocService {
     }
 
 
-   /* public Bloc updateBloc(Bloc bloc) {
-        return blocRepository.save(bloc);
-    }*/
+   
    public Bloc updateBloc(Bloc bloc) {
        // Récupérer le bloc existant depuis la base de données
        Bloc existingBloc = blocRepository.findById(bloc.getIdBloc())
