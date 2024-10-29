@@ -39,13 +39,8 @@ public class EtudiantRestControllor {
     }
 
     @PutMapping(path = "/update-etudiant")
-    public Etudiant updateBloc(@RequestBody Etudiant e) {
+    public Etudiant updateBloc(@RequestBody Etudiant e) 
+   {
         return etudiantService.addOrUpdate(e);
     }
-}
-
-        Etudiant etudiant = etudiantService.addOrUpdate(e);
-        return etudiant ;
-    }
-
 }
