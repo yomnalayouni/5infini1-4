@@ -58,8 +58,9 @@ public class BlocService {
 
 
     public Bloc getbloc(Long idBloc) {
-        return blocRepository.findById(idBloc).get();
-    }
+    return blocRepository.findById(idBloc).orElseThrow(() -> new IllegalArgumentException("Bloc with ID " + idBloc + " not found"));
+}
+
 
 
     public List<Bloc> trouverBlocsParNomEtCap(String c, Long b) {
