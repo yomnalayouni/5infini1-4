@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UniversityServiceTest {
+ class UniversityServiceTest {
 
     @Mock
     private UniversiteRepository universiteRepository;
@@ -28,12 +28,12 @@ public class UniversityServiceTest {
     private ServiceUniversite serviceUniversite;
 
     @BeforeEach
-    public void setUp() {
+     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    public void testAddUniversite() {
+     void testAddUniversite() {
         Universite universite = new Universite();
         universite.setIdUniversite(1L);
         universite.setNomUniversite("Test University");
@@ -48,7 +48,7 @@ public class UniversityServiceTest {
     }
 
     @Test
-    public void testDeleteUniversite() {
+     void testDeleteUniversite() {
         Long universiteId = 1L;
 
         doNothing().when(universiteRepository).deleteById(universiteId);
@@ -59,7 +59,7 @@ public class UniversityServiceTest {
     }
 
     @Test
-    public void testUpdateUniversite() {
+     void testUpdateUniversite() {
         Universite universite = new Universite();
         universite.setIdUniversite(1L);
         universite.setNomUniversite("Updated University");
@@ -74,7 +74,7 @@ public class UniversityServiceTest {
     }
 
     @Test
-    public void testGetAllUniversites() {
+     void testGetAllUniversites() {
         Universite uni1 = new Universite();
         uni1.setIdUniversite(1L);
         uni1.setNomUniversite("University 1");
@@ -96,7 +96,7 @@ public class UniversityServiceTest {
     }
 
     @Test
-    public void testGetUniversiteById() {
+     void testGetUniversiteById() {
         Universite universite = new Universite();
         universite.setIdUniversite(1L);
         universite.setNomUniversite("Test University");
@@ -111,7 +111,7 @@ public class UniversityServiceTest {
     }
 
     @Test
-    public void testAssignFoyerToUniversite() {
+     void testAssignFoyerToUniversite() {
         Long universiteId = 1L;
         Long foyerId = 1L;
 
@@ -131,7 +131,7 @@ public class UniversityServiceTest {
     }
 
     @Test
-    public void testUnassignFoyerFromUniversite() {
+     void testUnassignFoyerFromUniversite() {
         Long universiteId = 1L;
 
         Universite universite = new Universite();
