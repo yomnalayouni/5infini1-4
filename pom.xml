@@ -8,13 +8,12 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> 
     </parent>
 
     <groupId>tn.esprit</groupId>
     <artifactId>_5infini1-projetdevops</artifactId>
-    <version>0.0.6-SNAPSHOT</version>
-
+    <version>0.0.4-SNAPSHOT</version>
     <name>5infini1-projetdevops</name>
     <description>5infini1-projetdevops</description>
 
@@ -30,13 +29,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-       <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
@@ -52,7 +45,30 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
-
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.6.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.6.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -87,12 +103,22 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>deploymentRepo</id>
+            <name>Release Repository</name>
+            <url>http://192.168.50.4:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>deploymentRepoSnapshot</id>
+            <name>Snapshot Repository</name>
+            <url>http://192.168.50.4:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
-
