@@ -29,9 +29,22 @@ public class BlocService {
     }
 
 
-    public Bloc updateBloc(Bloc bloc) {
+   /* public Bloc updateBloc(Bloc bloc) {
         return blocRepository.save(bloc);
-    }
+    }*/
+   public Bloc updateBloc(Bloc bloc) {
+       // Récupérer le bloc existant depuis la base de données
+       Bloc existingBloc = blocRepository.findById(bloc.getIdBloc())
+               .orElseThrow(() -> new IllegalArgumentException("Bloc not found"));
+
+       // Mettre à jour les champs nécessaires
+       existingBloc.setNomBloc(bloc.getNomBloc());
+       existingBloc.setCapaciteBloc(bloc.getCapaciteBloc());
+
+       // Enregistrer le bloc mis à jour
+       return blocRepository.save(existingBloc);
+   }
+
 
     @Scheduled(fixedDelay = 15000)
 
