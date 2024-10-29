@@ -1,94 +1,87 @@
-package tn.esprit._5infini1projetdevops.services.tests;
+package tn.esprit._5infini1projetdevops.services;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import tn.esprit._5infini1projetdevops.Entity.Reservation;
+import tn.esprit._5infini1projetdevops.Entity.Universite;
+import tn.esprit._5infini1projetdevops.Repository.ChambreRepository;
 import tn.esprit._5infini1projetdevops.Repository.ReservationRepository;
-import tn.esprit._5infini1projetdevops.services.ReservationService;
+import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+@Service
+@AllArgsConstructor
+@Slf4j
+public class ReservationService implements IReservationService {
+    private final ReservationRepository repo;
+    private final ChambreRepository chambreRepository;
+    private final UniversiteRepository universiteRepository;
 
-@ExtendWith(MockitoExtension.class)
-class ReservationServiceTest { // Removed 'public' modifier
-
-    @Mock
-    private ReservationRepository reservationRepository;
-
-    @InjectMocks
-    private ReservationService reservationService;
-
-    private Reservation reservation;
-
-    @BeforeEach
-    void setUp() {
-        reservation = new Reservation();
-        reservation.setIdReservation("1");
-        reservation.setEstValide(true);
-        // Set other properties as needed
+    @Override
+    public Reservation addOrUpdate(Reservation r) {
+        return repo.save(r);
     }
 
-    @Test
-    void testAddOrUpdate() {
-        when(reservationRepository.save(reservation)).thenReturn(reservation);
-
-        Reservation savedReservation = reservationService.addOrUpdate(reservation);
-
-        verify(reservationRepository, times(1)).save(reservation);
-        assertEquals(reservation, savedReservation);
+    @Override
+    public List<Reservation> findAll() {
+        return repo.findAll();
     }
 
-    @Test
-    void testFindAll() {
-        List<Reservation> reservations = Arrays.asList(reservation);
-        when(reservationRepository.findAll()).thenReturn(reservations);
-
-        List<Reservation> foundReservations = reservationService.findAll();
-
-        verify(reservationRepository, times(1)).findAll();
-        assertEquals(1, foundReservations.size());
-        assertEquals(reservation, foundReservations.get(0));
+    @Override
+    public Reservation findById(String id) {
+        return repo.findById(id).orElse(null);
     }
 
-    @Test
-    void testFindById() {
-        when(reservationRepository.findById("1")).thenReturn(Optional.of(reservation));
-
-        Reservation foundReservation = reservationService.findById("1");
-
-        verify(reservationRepository, times(1)).findById("1");
-        assertEquals(reservation, foundReservation);
+    @Override
+    public void deleteById(String id) {
+        repo.deleteById(id);
     }
 
-    @Test
-    void testDeleteById() {
-        reservationService.deleteById("1");
-
-        verify(reservationRepository, times(1)).deleteById("1");
+    @Override
+    public void delete(Reservation r) {
+        repo.delete(r);
     }
 
-    @Test
-    void testAnnulerReservations() {
-        LocalDate dateDebutAU = LocalDate.of(2022, 9, 15);
-        LocalDate dateFinAU = LocalDate.of(2023, 6, 30);
-        reservation.setAnneeUniversitaire(2022); // Assuming this method exists
-        
-        when(reservationRepository.findByEstValideAndAnneeUniversitaireBetween(true, dateDebutAU, dateFinAU))
-                .thenReturn(Arrays.asList(reservation));
+    @Override
+    public void annulerReservations() {
+        LocalDate dateDebutAU;
+        LocalDate dateFinAU;
+        int year = LocalDate.now().getYear() % 100;
 
-        reservationService.annulerReservations();
+        if (LocalDate.now().getMonthValue() <= 7) {
+            dateDebutAU = LocalDate.of(Integer.parseInt("20" + (year - 1)), 9, 15);
+            dateFinAU = LocalDate.of(Integer.parseInt("20" + year), 6, 30);
+        } else {
+            dateDebutAU = LocalDate.of(Integer.parseInt("20" + year), 9, 15);
+            dateFinAU = LocalDate.of(Integer.parseInt("20" + (year + 1)), 6, 30);
+        }
 
-        verify(reservationRepository, times(1)).findByEstValideAndAnneeUniversitaireBetween(true, dateDebutAU, dateFinAU);
-        verify(reservationRepository, times(1)).save(reservation);
-        assertEquals(false, reservation.isEstValide());
+        for (Reservation reservation : repo.findByEstValideAndAnneeUniversitaireBetween(true, dateDebutAU, dateFinAU)) {
+            reservation.setEstValide(false);
+            repo.save(reservation);
+            log.info("La reservation " + reservation.getIdReservation() + " est annulée automatiquement");
+        }
+    }
+
+    @Override
+    public Universite getuniversite(Long idUniversite) {
+        return universiteRepository.findById(idUniversite)
+                .orElseThrow(() -> new NoSuchElementException("Université with ID " + idUniversite + " not found"));
+    }
+
+    public void assignFoyerToUniversite(Long idUniversite, Foyer foyer) {
+        Universite universite = universiteRepository.findById(idUniversite).get();
+        universite.setFoyer(foyer);
+        universiteRepository.save(universite);
+    }
+
+    public void unassignFoyerToUniversite(Long idUniversite) {
+        Universite universite = universiteRepository.findById(idUniversite).get();
+        universite.setFoyer(null);
+        universiteRepository.save(universite);
     }
 }
