@@ -3,7 +3,6 @@ package tn.esprit._5infini1projetdevops.services;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import tn.esprit._5infini1projetdevops.Entity.Chambre;
 import tn.esprit._5infini1projetdevops.Entity.Reservation;
 import tn.esprit._5infini1projetdevops.Repository.ChambreRepository;
 import tn.esprit._5infini1projetdevops.Repository.ReservationRepository;
@@ -45,6 +44,7 @@ public class ReservationService implements IReservationService {
 
     @Override
     public void annulerReservations() {
+        // Début "récuperer l'année universitaire actuelle"
         LocalDate dateDebutAU;
         LocalDate dateFinAU;
         int year = LocalDate.now().getYear() % 100;
@@ -56,6 +56,7 @@ public class ReservationService implements IReservationService {
             dateDebutAU = LocalDate.of(Integer.parseInt("20" + year), 9, 15);
             dateFinAU = LocalDate.of(Integer.parseInt("20" + (year + 1)), 6, 30);
         }
+        // Fin "récuperer l'année universitaire actuelle"
 
         for (Reservation reservation : repo.findByEstValideAndAnneeUniversitaireBetween(true, dateDebutAU, dateFinAU)) {
             reservation.setEstValide(false);
