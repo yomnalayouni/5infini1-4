@@ -27,15 +27,10 @@ public class Etudiant implements Serializable {
     String ecole;
     LocalDate dateNaissance;
     @ManyToMany(mappedBy = "etudiants")
-<<<<<<< HEAD
+
     private List<Reservation> reservations = new ArrayList<>();
 
 
 
 }
-=======
-    List<Reservation> reservations= new ArrayList<>();
 
-
-}
->>>>>>> university
