@@ -1,3 +1,5 @@
+package tn.esprit._5infini1projetdevops.services.tests;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -79,6 +81,20 @@ public class ReservationServiceTest {
     }
 
     @Test
+    void testFindById_NotFound() {
+        // Arrange
+        String id = "R-2024-999"; // ID that does not exist
+        when(reservationRepository.findById(id)).thenReturn(Optional.empty());
+
+        // Act
+        Reservation result = reservationService.findById(id);
+
+        // Assert
+        assertNull(result); // Expecting null since the reservation doesn't exist
+        verify(reservationRepository, times(1)).findById(id);
+    }
+
+    @Test
     void testDeleteById() {
         // Arrange
         String id = "R-2024-001";
@@ -101,5 +117,11 @@ public class ReservationServiceTest {
 
         // Assert
         verify(reservationRepository, times(1)).delete(reservation);
+    }
+
+    // Optional: Test for annulerReservations (if implemented)
+    @Test
+    void testAnnulerReservations() {
+        // Add logic to test the annulerReservations method here.
     }
 }
