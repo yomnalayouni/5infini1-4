@@ -8,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+@EqualsAndHashCode
 @Entity
 @Table(name = "T_FOYER")
 @Getter
@@ -24,8 +24,8 @@ public class Foyer implements Serializable {
     String nomFoyer;
     long capaciteFoyer;
     @OneToOne(mappedBy = "foyer")
-    transient Universite universite;
+    private Universite universite;
     @OneToMany(mappedBy = "foyer")
-    transient List<Bloc> blocs = new ArrayList<>();
+    private List<Bloc> blocs = new ArrayList<>();
 
 }

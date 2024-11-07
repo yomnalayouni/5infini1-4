@@ -1,6 +1,7 @@
 package tn.esprit._5infini1projetdevops.services;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
 import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
@@ -8,9 +9,17 @@ import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+
+
 public class EtudiantService implements IEtudiantService {
-    EtudiantRepository repo;
+
+    private final EtudiantRepository repo;
+
+    @Autowired
+    public EtudiantService(EtudiantRepository repo) {
+        this.repo = repo;
+    }
+
 
     @Override
     public Etudiant addOrUpdate(Etudiant e) {
