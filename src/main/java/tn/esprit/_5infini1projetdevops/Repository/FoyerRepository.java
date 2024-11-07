@@ -16,7 +16,7 @@ public interface FoyerRepository extends JpaRepository<Foyer,Long> {
 
     // Afficher le foyer de l'université dont son nom est passé en paramétre.
     // select f from Foyer f JOIN Universite u ON <Condition de jointure> where <condition>
-    Foyer findByUniversiteNomUniversite(String nom);
+    //Foyer findByUniversiteNomUniversite(String nom);
 
     // Afficher la liste des foyers qui comportent des chambres de meme type
     // que le type passé en paramétre

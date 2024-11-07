@@ -6,7 +6,7 @@
         context: .
         dockerfile: Dockerfile
       ports:
-        - "8081:8081"  # Host port 8081 to container port 8081
+        - "8082:8081"  # Host port 8081 to container port 8081
       depends_on:
         - db  # Wait for database to start
       environment:
