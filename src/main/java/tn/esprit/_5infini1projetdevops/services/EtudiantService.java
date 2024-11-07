@@ -22,20 +22,13 @@ public class EtudiantService implements IEtudiantService {
         return repo.findAll();
     }
 
-<<<<<<< HEAD
    @Override
    public Etudiant findById(long id) {
     return repo.findById(id).orElse(null);
     }
 
 
-=======
-    @Override
-    public Etudiant findById(long id) {
-        return repo.findById(id).get();
-    }
 
->>>>>>> university
     @Override
     public void deleteById(long id) {
         repo.deleteById(id);

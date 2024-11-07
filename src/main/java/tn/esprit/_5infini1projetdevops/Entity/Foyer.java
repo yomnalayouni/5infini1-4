@@ -24,13 +24,8 @@ public class Foyer implements Serializable {
     String nomFoyer;
     long capaciteFoyer;
     @OneToOne(mappedBy = "foyer")
-<<<<<<< HEAD
     transient Universite universite;
     @OneToMany(mappedBy = "foyer")
     transient List<Bloc> blocs = new ArrayList<>();
-=======
-    Universite universite;
-    @OneToMany(mappedBy = "foyer")
-    List<Bloc> blocs= new ArrayList<>();
->>>>>>> university
+
 }

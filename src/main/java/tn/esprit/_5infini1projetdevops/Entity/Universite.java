@@ -21,12 +21,8 @@ public class Universite {
     @OneToOne(cascade = CascadeType.ALL)
     Foyer foyer;
 
-<<<<<<< HEAD
 
     public void setId(Long idUniversite) {
-=======
-    public void setId(Long idUniversite) {
         this.idUniversite = idUniversite; // Assign the provided ID to the field
->>>>>>> university
     }
 }
