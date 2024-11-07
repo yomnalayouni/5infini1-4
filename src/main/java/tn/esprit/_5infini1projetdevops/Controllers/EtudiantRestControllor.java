@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
 import tn.esprit._5infini1projetdevops.services.EtudiantService;
+import tn.esprit._5infini1projetdevops.services.IEtudiantService;
+
 
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/etudiant")
 public class EtudiantRestControllor {
+
 
     public EtudiantService etudiantService ;
 

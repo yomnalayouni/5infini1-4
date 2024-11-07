@@ -12,14 +12,9 @@ public interface IReservationService {
     Reservation findById(String id);
     void deleteById(String id);
     void delete(Reservation r);
-   // Reservation ajouterReservationEtAssignerAChambreEtAEtudiant (Long numChambre, long cin) ;
-    //long  getReservationParAnneeUniversitaire(LocalDate debutAnnee, LocalDate finAnnee ) ;
-    //String annulerReservation (long cinEtudiant) ;
-
-   // void affectReservationAChambre(String idRes,long idChambre);
     void annulerReservations();
-
-
-
-
 }
+
+
+
+

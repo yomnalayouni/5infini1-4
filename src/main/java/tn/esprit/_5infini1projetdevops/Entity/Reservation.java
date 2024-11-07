@@ -23,9 +23,9 @@ public class Reservation implements Serializable {
     String idReservation;
     LocalDate anneeUniversitaire;
     boolean estValide;
+    
     @ManyToMany
     @JsonIgnore
-
-    List<Etudiant> etudiants = new ArrayList<>();
+    private List<Etudiant> etudiants = new ArrayList<>();
 
 }

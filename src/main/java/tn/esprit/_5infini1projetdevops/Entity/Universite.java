@@ -23,5 +23,6 @@ public class Universite {
 
 
     public void setId(Long idUniversite) {
+        this.idUniversite = idUniversite; // Assign the provided ID to the field
     }
 }

@@ -7,6 +7,7 @@ import tn.esprit._5infini1projetdevops.services.BlocService;
 import java.util.List;
 
 public class BlocRestControllor {
+
     public BlocService blocService ;
     @PostMapping(path = "/add-bloc")
     public Bloc addBloc (@RequestBody Bloc bloc)
@@ -32,6 +33,7 @@ public class BlocRestControllor {
     {
         blocService.deleteBloc(idBloc);
     }
+
 
 
     @PutMapping(path = "/update-bloc")
