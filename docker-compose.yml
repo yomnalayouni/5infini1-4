@@ -1,31 +1,29 @@
 version: '3.8'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8081:8081"  # Host port 8081 to container port 8081
-    depends_on:
-      - db  # Wait for database to start
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/foyer
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD:
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-
   db:
     image: mysql:latest
     environment:
       MYSQL_DATABASE: foyer
       MYSQL_USER: root
       MYSQL_PASSWORD:
-      MYSQL_ROOT_PASSWORD: root  # Required root password for MySQL
+      MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
-      - db-data:/var/lib/mysql  # Volume for persistent data storage
+      - db-data:/var/lib/mysql
+
+  app:
+      image: zinaghribi/foyer-app:latest
+      ports:
+      - "8089:8081"
+      depends_on:
+      - db
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/foyer
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD:
+        SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
 volumes:
   db-data:

@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
 import tn.esprit._5infini1projetdevops.services.EtudiantService;
-import tn.esprit._5infini1projetdevops.services.IEtudiantService;
+
 
 
 import java.util.List;
