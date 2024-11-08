@@ -2,13 +2,17 @@ package tn.esprit._5infini1projetdevops.Controllers;
 
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._5infini1projetdevops.Entity.Bloc;
+import tn.esprit._5infini1projetdevops.Entity.Foyer;
 import tn.esprit._5infini1projetdevops.services.BlocService;
+import tn.esprit._5infini1projetdevops.services.FoyerServiceInter;
 
 import java.util.List;
 
 public class BlocRestControllor {
 
     public BlocService blocService ;
+
+
     @PostMapping(path = "/add-bloc")
     public Bloc addBloc (@RequestBody Bloc bloc)
     {
@@ -22,7 +26,7 @@ public class BlocRestControllor {
     }
 
     @GetMapping("/show-blocid/{id}")
-    public List<Bloc> gelBloc(@PathVariable("id") Long idBloc)
+    public List<Bloc> gelBloc(@PathVariable ("id") Long idBloc)
     {
         return (List<Bloc>) blocService.getbloc(idBloc);
     }
@@ -33,7 +37,6 @@ public class BlocRestControllor {
     {
         blocService.deleteBloc(idBloc);
     }
-
 
 
     @PutMapping(path = "/update-bloc")
@@ -50,5 +53,4 @@ public class BlocRestControllor {
     {
         blocService.trouverBlocsParNomEtCap(c, b);
     }
-
 }
