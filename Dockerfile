@@ -1,6 +1,6 @@
 # Utiliser une image OpenJDK 17 légère
 FROM openjdk:17-jdk-alpine
-LABEL authors="zina ghribi"
+LABEL authors="mortadha"
 # Définir le répertoire de travail
 WORKDIR /app
 
