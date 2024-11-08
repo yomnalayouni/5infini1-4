@@ -1,9 +1,21 @@
 version: '3.8'
 services:
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: foyer
+      MYSQL_USER: root
+      MYSQL_PASSWORD:
+      MYSQL_ROOT_PASSWORD: root  # Required root password for MySQL
+
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql  # Volume for persistent data storage
+
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: rahmamoalla/university-app:latest
     ports:
       - "8082:8081"
     depends_on:
@@ -14,17 +26,6 @@ services:
       SPRING_DATASOURCE_PASSWORD:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
-  db:
-    image: mysql:latest
-    environment:
-      MYSQL_DATABASE: foyer
-      MYSQL_USER: root
-      MYSQL_PASSWORD:
-      MYSQL_ROOT_PASSWORD: root  # Required root password for MySQL
-    ports:
-      - "3306:3306"
-    volumes:
-      - db-data:/var/lib/mysql  # Volume for persistent data storage
 
 volumes:
   db-data:
