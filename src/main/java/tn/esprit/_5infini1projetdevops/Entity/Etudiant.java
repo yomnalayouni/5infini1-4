@@ -15,21 +15,18 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Etudiant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idEtudiant;
+    Long idEtudiant;
     String nomEt;
     String prenomEt;
     long cin;
     String ecole;
     LocalDate dateNaissance;
     @ManyToMany(mappedBy = "etudiants")
-    private List<Reservation> reservations = new ArrayList<>();
-
-
+    List<Reservation> reservations = new ArrayList<>();
 
 }
 

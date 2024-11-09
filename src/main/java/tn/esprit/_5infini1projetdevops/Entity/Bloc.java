@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+    @Entity
     @Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-    @Entity
-    @ToString
     @FieldDefaults(level = AccessLevel.PRIVATE)
     @Table(name = "bloc")
     public class Bloc {
@@ -20,100 +20,16 @@ import java.util.Set;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         Long idBloc;
         String nomBloc;
-        Long capaciteBloc;
+        long capaciteBloc;
 
         @ManyToOne
         Foyer foyer;
-        @OneToMany (mappedBy = "bloc" , fetch = FetchType.EAGER)
-        Set<Chambre> chambres ;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        @OneToMany (mappedBy = "bloc" , fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        List<Chambre> chambres= new ArrayList<>();
+
+        public void addChambre(Chambre chambre) {
+            chambres.add(chambre);
+            chambre.setBloc(this);
+        }
     }
 

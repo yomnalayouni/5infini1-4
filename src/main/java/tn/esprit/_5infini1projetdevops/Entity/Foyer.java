@@ -15,17 +15,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Foyer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idFoyer;
+    Long idFoyer;
     String nomFoyer;
     long capaciteFoyer;
     @OneToOne(mappedBy = "foyer")
-    transient Universite universite;
+    Universite universite;
     @OneToMany(mappedBy = "foyer")
-    transient List<Bloc> blocs = new ArrayList<>();
+    List<Bloc> blocs = new ArrayList<>();
 
 }
