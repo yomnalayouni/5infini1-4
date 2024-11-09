@@ -11,7 +11,7 @@
       volumes:
         - db-data:/var/lib/mysql
       networks:
-        - foyer-network
+        - bloc-network
 
     app:
       image: mayssen29/bloc-app:latest
@@ -29,5 +29,7 @@
 
 volumes:
     db-data:
+
+
 networks:
     bloc-network:
