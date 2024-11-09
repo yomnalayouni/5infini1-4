@@ -70,6 +70,11 @@
             <version>3.6.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version> <!-- You can use a different version if needed -->
+        </dependency>
     </dependencies>
 
     <build>
