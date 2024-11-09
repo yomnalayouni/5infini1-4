@@ -1,35 +1,35 @@
-  version: '3.8'
+version: '3.8'
 
-  services:
-    db:
-      image: mysql:latest
-      environment:
-        MYSQL_DATABASE: foyer
-        MYSQL_ROOT_PASSWORD: root
-      ports:
-        - "3306:3306"
-      volumes:
-        - db-data:/var/lib/mysql
-      networks:
-        - foyer-network
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: bloc
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - foyer-network   # Reference to the network
 
-    app:
-      image: mayssen29/bloc-app:latest
-      ports:
-        - "8089:8089"
-      depends_on:
-        - db
-      environment:
-        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/foyer
-        SPRING_DATASOURCE_USERNAME: root
-        SPRING_DATASOURCE_PASSWORD: root
-        SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      networks:
-        - foyer-network
+  app:
+    image: mayssen29/bloc-app:latest
+    ports:
+      - "8089:8089"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/bloc
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    networks:
+      - foyer-network   # Reference to the network
 
 volumes:
-    db-data:
-
+  db-data:
 
 networks:
-    foyer-network:
+  foyer-network:  # Define the network here
+    driver: bridge
