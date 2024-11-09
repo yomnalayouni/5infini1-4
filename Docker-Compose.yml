@@ -27,8 +27,7 @@
       networks:
         - bloc-network
 
-  volumes:
+volumes:
     db-data:
-
-  networks:
+networks:
     bloc-network:
