@@ -7,7 +7,6 @@ WORKDIR /app
 # Copier le fichier JAR depuis le dossier target
 COPY target/*.jar app.jar
 
-# Exposer le port 8080
 EXPOSE 8089
 
 # Exécuter l'application Spring Boot

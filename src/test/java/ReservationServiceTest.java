@@ -1,11 +1,12 @@
-package tn.esprit._5infini1projetdevops.services.tests;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import tn.esprit._5infini1projetdevops.Application;
 import tn.esprit._5infini1projetdevops.Entity.Reservation;
 import tn.esprit._5infini1projetdevops.Repository.ReservationRepository;
 import tn.esprit._5infini1projetdevops.services.ReservationService;
@@ -16,7 +17,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
+@ActiveProfiles("test")
+@ContextConfiguration(classes = Application.class)
 @ExtendWith(MockitoExtension.class)
 public class ReservationServiceTest {
 
@@ -123,5 +125,9 @@ public class ReservationServiceTest {
     @Test
     void testAnnulerReservations() {
         // Add logic to test the annulerReservations method here.
+    }
+    @Test
+    void contextLoads() {
+        assertNotNull(reservationService, "reservationService should be autowired and not null");
     }
 }
