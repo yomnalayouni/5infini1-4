@@ -1,11 +1,15 @@
 package tn.esprit._5infini1projetdevops.Controllers;
 
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._5infini1projetdevops.Entity.Universite;
 import tn.esprit._5infini1projetdevops.services.ServiceUniversite;
 
 import java.util.List;
 
+@RestController
+@AllArgsConstructor
+@RequestMapping("/universite")
 public class UniversiteC {
     public ServiceUniversite universiteService;
 
