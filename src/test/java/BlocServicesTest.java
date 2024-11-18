@@ -4,6 +4,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import tn.esprit._5infini1projetdevops.Application;
 import tn.esprit._5infini1projetdevops.Entity.Bloc;
 import tn.esprit._5infini1projetdevops.Repository.BlocRepository;
 import tn.esprit._5infini1projetdevops.services.BlocService;
@@ -17,6 +20,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
+@ActiveProfiles("test")
+@ContextConfiguration(classes = Application.class)
 @ExtendWith(MockitoExtension.class)
  class BlocServicesTest {
 
@@ -137,4 +142,8 @@ import static org.mockito.Mockito.*;
         assertEquals(bloc, result.get(0));
         verify(blocRepository, times(1)).findAllByNomBlocIsAndCapaciteBloc("Bloc A", 50L);
     }
+   @Test
+   void contextLoads() {
+      assertNotNull(blocService, "blocService should be autowired and not null");
+   }
 }
