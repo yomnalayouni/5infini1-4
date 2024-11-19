@@ -1,6 +1,7 @@
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+<<<<<<< HEAD
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -8,19 +9,55 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import tn.esprit._5infini1projetdevops.Entity.Foyer;
 import tn.esprit._5infini1projetdevops.Entity.Universite;
+=======
+import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import tn.esprit._5infini1projetdevops.Application;
+import tn.esprit._5infini1projetdevops.Entity.Etudiant;
+import tn.esprit._5infini1projetdevops.Entity.Foyer;
+import tn.esprit._5infini1projetdevops.Entity.Universite;
+import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 import tn.esprit._5infini1projetdevops.Repository.FoyerRepository;
 import tn.esprit._5infini1projetdevops.Repository.UniversiteRepository;
 import tn.esprit._5infini1projetdevops.services.ServiceUniversite;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
  class UniversityServiceTest {
+=======
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+@ActiveProfiles("test")
+@ContextConfiguration(classes = Application.class)
+@ExtendWith(MockitoExtension.class)
+class UniversityServiceTest {
+
+
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 
     @Mock
     private UniversiteRepository universiteRepository;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
     @Mock
     private FoyerRepository foyerRepository;
 
@@ -145,4 +182,13 @@ import java.util.Optional;
         assertNull(universite.getFoyer());
         verify(universiteRepository, times(1)).save(universite);
     }
+<<<<<<< HEAD
+=======
+    @Test
+    void contextLoads() {
+        assertNotNull(serviceUniversite, "serviceUniversite should be autowired and not null");
+    }
+
+
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 }

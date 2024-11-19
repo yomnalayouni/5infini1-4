@@ -4,11 +4,20 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+<<<<<<< HEAD
 
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
 import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
 import tn.esprit._5infini1projetdevops.services.EtudiantService;
 
+=======
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import tn.esprit._5infini1projetdevops.Application;
+import tn.esprit._5infini1projetdevops.Entity.Etudiant;
+import tn.esprit._5infini1projetdevops.Repository.EtudiantRepository;
+import tn.esprit._5infini1projetdevops.services.EtudiantService;
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +25,12 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+<<<<<<< HEAD
 
+=======
+@ActiveProfiles("test")
+@ContextConfiguration(classes = Application.class)
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 @ExtendWith(MockitoExtension.class)
 class EtudiantServiceTest {
 
@@ -97,4 +111,11 @@ class EtudiantServiceTest {
         // Assert
         verify(repo, times(1)).delete(etudiant);
     }
+<<<<<<< HEAD
+=======
+    @Test
+    void contextLoads() {
+        assertNotNull(etudiantService, "EtudiantService should be autowired and not null");
+    }
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 }

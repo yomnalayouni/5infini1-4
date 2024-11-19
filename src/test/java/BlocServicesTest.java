@@ -4,6 +4,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+<<<<<<< HEAD
+=======
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import tn.esprit._5infini1projetdevops.Application;
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 import tn.esprit._5infini1projetdevops.Entity.Bloc;
 import tn.esprit._5infini1projetdevops.Repository.BlocRepository;
 import tn.esprit._5infini1projetdevops.services.BlocService;
@@ -17,6 +23,11 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
+<<<<<<< HEAD
+=======
+@ActiveProfiles("test")
+@ContextConfiguration(classes = Application.class)
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 @ExtendWith(MockitoExtension.class)
  class BlocServicesTest {
 
@@ -137,4 +148,11 @@ import static org.mockito.Mockito.*;
         assertEquals(bloc, result.get(0));
         verify(blocRepository, times(1)).findAllByNomBlocIsAndCapaciteBloc("Bloc A", 50L);
     }
+<<<<<<< HEAD
+=======
+   @Test
+   void contextLoads() {
+      assertNotNull(blocService, "blocService should be autowired and not null");
+   }
+>>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 }
