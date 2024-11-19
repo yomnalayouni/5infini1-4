@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-
-=======
->>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,15 +15,9 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-<<<<<<< HEAD
-
-class ChambreServiceTest {
-
-=======
 import static org.mockito.Mockito.times;
 
 public class ChambreServiceTest {
->>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
     @Mock
     private ChambreRepository chambreRepository;
 
