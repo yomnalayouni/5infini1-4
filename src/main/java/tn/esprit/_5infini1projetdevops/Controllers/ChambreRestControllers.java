@@ -2,7 +2,9 @@ package tn.esprit._5infini1projetdevops.Controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit._5infini1projetdevops.Entity.Bloc;
 import tn.esprit._5infini1projetdevops.Entity.Chambre;
+import tn.esprit._5infini1projetdevops.services.BlocService;
 import tn.esprit._5infini1projetdevops.services.ChambreServiceImpl;
 
 
@@ -14,6 +16,20 @@ import java.util.List;
 public class ChambreRestControllers {
 
     public ChambreServiceImpl chambreService ;
+    public BlocService blocService ;
+
+
+    @PostMapping(path = "/add-bloc")
+    public Bloc addBloc (@RequestBody Bloc bloc)
+    {
+        return blocService.addBloc(bloc);
+    }
+
+    @GetMapping("/show-bloc")
+    public List<Bloc> getAllblocs() {
+        List<Bloc> listBlocs = blocService.getAllblocs();
+        return listBlocs;
+    }
 
     @GetMapping("/show-chambre")
     public List<Chambre> getAllchambres() {

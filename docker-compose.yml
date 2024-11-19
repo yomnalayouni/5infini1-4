@@ -33,3 +33,4 @@ volumes:
 
 networks:
   foyer-network:
+    driver: bridge
