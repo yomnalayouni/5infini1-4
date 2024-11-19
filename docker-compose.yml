@@ -1,59 +1,35 @@
 version: '3.8'
 
 services:
-<<<<<<< HEAD
-
-=======
->>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
   db:
     image: mysql:latest
     environment:
       MYSQL_DATABASE: foyer
-<<<<<<< HEAD
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: root  # Required root password for MySQL
-    ports:
-      - "3306:3306"
-    volumes:
-      - db-data:/var/lib/mysql  # Volume for persistent data storage
-    networks:
-      - foyer-network
-  app:
-    image: morta1920/chambre-app:latest
-    ports:
-      - "8089:8089"  # Host port 8081 to container port 8081
-    depends_on:
-      - db  # Wait for database to start
-=======
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
     networks:
-      - foyer-network
+      - foyer-network   # Reference to the network
 
   app:
-    image: zinaghribi/foyer-app:latest
+    image: morta1920/chambre-app:latest
     ports:
       - "8089:8089"
     depends_on:
       - db
->>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/foyer
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     networks:
-      - foyer-network
+      - foyer-network   # Reference to the network
 
 volumes:
   db-data:
 
 networks:
-  foyer-network:
-<<<<<<< HEAD
+  foyer-network:  # Define the network here
     driver: bridge
-=======
->>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
