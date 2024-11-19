@@ -5,12 +5,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-<<<<<<< HEAD
-=======
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import tn.esprit._5infini1projetdevops.Application;
->>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 import tn.esprit._5infini1projetdevops.Entity.Bloc;
 import tn.esprit._5infini1projetdevops.Entity.Foyer;
 import tn.esprit._5infini1projetdevops.Entity.Universite;
@@ -24,12 +21,8 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-<<<<<<< HEAD
-
-=======
 @ActiveProfiles("test")
 @ContextConfiguration(classes = Application.class)
->>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 @ExtendWith(MockitoExtension.class)
  class FoyerServiceTest {
 
@@ -188,11 +181,8 @@ import static org.mockito.Mockito.*;
         // Assert
         assertEquals(0L, result.getCapaciteFoyer());
     }
-<<<<<<< HEAD
-=======
     @Test
     void contextLoads() {
         assertNotNull(foyerService, "foyerService should be autowired and not null");
     }
->>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 }
