@@ -8,12 +8,7 @@ import tn.esprit._5infini1projetdevops.services.EtudiantService;
 
 
 
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> de3295fc1421df8f2600926fa4d63316d6b5dac5
 import java.util.List;
 
 @RestController
