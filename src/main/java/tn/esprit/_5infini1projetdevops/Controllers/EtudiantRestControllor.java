@@ -1,6 +1,5 @@
 package tn.esprit._5infini1projetdevops.Controllers;
 
-
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._5infini1projetdevops.Entity.Etudiant;
