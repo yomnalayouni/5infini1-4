@@ -8,6 +8,7 @@ import java.util.List;
 
 public class BlocRestControllor {
 
+    
     public BlocService blocService ;
     @PostMapping(path = "/add-bloc")
     public Bloc addBloc (@RequestBody Bloc bloc)
